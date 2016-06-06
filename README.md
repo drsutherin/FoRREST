@@ -1,6 +1,8 @@
 # Idamous
 Reverse Engineering Framework
 
+Version 0.1
+
 ## Overview
 The purpose of this project is to create a vulnerability anaylsis framework that
 combines existing tools into one package. It also makes it easier to create or
