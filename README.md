@@ -11,3 +11,17 @@ This framework is currently designed for Linux
 
 # Requirements
 * Python 2.7
+
+# Running
+To run the program:
+
+```
+python idamous.py
+```
+
+# Extending
+To extend the program, just import idamous.
+
+```
+import idamous
+```
