@@ -1,6 +1,11 @@
 #!/usr/bin/python
 
 import subprocess
+import os
+from importlib import import_module
+from plugins import *
+
+# from plugins.elf import elf
 
 class Idamous:
     
@@ -21,16 +26,6 @@ class Idamous:
         """
         output = subprocess.check_output([commandName].extend(args))
         return output
-        
-    # def get_elf(self, amount = 0):
-    #     return_value = None
-        
-    #     if amount == 0:
-    #         return_value = self._call_shell_function('readelf', ['-a', self.current_file])
-    #     else:
-    #         return_value = self._call_shell_function('readelf', ['-h', self.current_file])
-            
-    #     return return_value
 
 
 # If you call idamous.py, run this.
@@ -38,4 +33,5 @@ if __name__ == '__main__':
     print 'Creating idamous instance'
     idamous = Idamous()
     idamous.set_file('test_binaries/custom_binaries/generate_fib.out')
-    # print idamous.get_elf()
+    
+    elf.elf.test()
