@@ -9,7 +9,7 @@ class Extract:
     def __init__(self, filename):
         self.filename = filename
 
-    def get_filetype(self, meme = False):
+    def get_filetype(self, meme = True):
         data = ""
         good = True
         
