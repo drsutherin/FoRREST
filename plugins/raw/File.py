@@ -51,10 +51,14 @@ class File:
 
         chunk = self.file.read(chunksize)
         if not chunk:
-            self.file.close()
-            self.file = None
+            self.reset_read()
             
         return chunk
+        
+    def reset_read(self):
+        if self.file != None:
+            self.file.close()
+            self.file = None
 
     @staticmethod
     def hash_file(filename, hash_algo):
