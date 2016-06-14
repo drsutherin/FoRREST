@@ -16,12 +16,19 @@ class Idamous:
         # Change to not being hardcoded later
         self.operating_system = 'linux'
         self.current_file = None
+        self.result_directory = None
     
     def set_file(self, filename):
         self.current_file = filename
     
     def get_file(self):
         return self.current_file
+
+    def set_result_directory(self, dir):
+        self.result_directory = dir
+
+    def get_result_directory(self):
+        return self.result_directory
 
     def _call_shell_function(self, commandName, args):
         """
@@ -51,12 +58,19 @@ if __name__ == '__main__':
             break
         except IOError:
             print "File %s does not exist. Try again" % binary
-        
+    
+    # Creates a directory for the results of the Idamous tests
     idamous.set_file(binary)
+    if "." in binary:
+        splitFile = binary.split(".")[-2]
+        splitFile = splitFile.split("/")[-1]
     
+    idamous.set_result_directory("./results/" + splitFile)
+    # This could be dangerous...
+    subprocess.Popen(["rm", "-rf", idamous.get_result_directory()])
+    subprocess.Popen(["mkdir", idamous.get_result_directory()])
 
-    elf.elf.test()
-    
+    # Run some test functions
     raw_data = raw.File.File(idamous.get_file())
     
     print 'Filename:', raw_data.get_name()
