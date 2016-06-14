@@ -41,6 +41,7 @@ if __name__ == '__main__':
     print 'Creating idamous instance'
     idamous = Idamous()
     
+    # Allow user to specify file to test
     while True:
         try:
             print 'Enter name of binary file: '
@@ -53,18 +54,9 @@ if __name__ == '__main__':
         
     idamous.set_file(binary)
     
-<<<<<<< HEAD
+
     elf.elf.test()
     
-    #elf.elf.read_header(idamous)
-    
-    #md5.md5.checksum(idamous)
-    
-    #sha1.sha1.checksum(idamous)
-    
-    basic_info = idamous.basics()
-    print basic_info
-=======
     raw_data = raw.File.File(idamous.get_file())
     
     print 'Filename:', raw_data.get_name()
@@ -78,4 +70,4 @@ if __name__ == '__main__':
     extracted_data = extract.Extract.Extract(idamous.get_file())
     
     print 'Filetype:', extracted_data.get_filetype()
->>>>>>> origin/master
+
