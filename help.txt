@@ -1,0 +1,11 @@
+IDAMOUS HELP
+	Idamous is a framework of tools for reverse engineering binary executable files
+
+FUNCTIONS:
+load [file]
+	Loads the specified file and creates a directory for the results of tests
+get_extracted
+	Gets extracted data about the currently loaded file
+get_raw
+	Gets raw data about the currently loaded file: filename, file extension, file size, inode, path, MD5 sum, and SHA1 sum
+	
