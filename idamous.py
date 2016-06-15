@@ -129,7 +129,7 @@ class Idamous:
 	        e.close()
 
 	def get_interpreted_data(self, cmd):
-		intepreted_file = idamous.get_result_directory() + "/interpreted_data.txt"
+		interpreted_file = idamous.get_result_directory() + "/interpreted_data.txt"
 		if not os.path.isfile(interpreted_file):
                         subprocess.Popen(["touch", interpreted_file])
                 i = open(interpreted_file, "w")
@@ -161,6 +161,9 @@ if __name__ == '__main__':
 
 		elif cmd[0] == "get_extracted":
 			idamous.get_extracted_data(cmd)
+
+		elif cmd[0] == "get_interpreted":
+			idamous.get_interpreted_data(cmd)
 
 		elif cmd[0] == "get_raw":
 			idamous.get_raw_data(cmd)

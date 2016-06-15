@@ -1,1 +1,0 @@
-Filetype: application/x-executable
