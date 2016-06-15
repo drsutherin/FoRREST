@@ -1,7 +1,0 @@
-Filename: generate_fib.o
-File extension: o
-File size: 8636
-File inode: 443
-File path: test_binaries/custom_binaries
-File MD5: 1c5f6d71d03dcd30ea5335cdd9f5dee7
-File SHA1: 2aff6441e2a8fdfb8015d1c7de1ffde2d13e8647

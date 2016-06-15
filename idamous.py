@@ -128,10 +128,21 @@ class Idamous:
 	     	print "Extracted data saved to %s" % extracted_file
 	        e.close()
 
+	def get_interpreted_data(self, cmd):
+		intepreted_file = idamous.get_result_directory() + "/interpreted_data.txt"
+		if not os.path.isfile(interpreted_file):
+                        subprocess.Popen(["touch", interpreted_file])
+                i = open(interpreted_file, "w")
 
+		interpreted_data = interpret.Interpret.Interpret(self.get_file())
+		
+		print 'Strings: %s' % interpreted_data.get_strings(self.get_file())
+		i.write('Strings: %s\n' % interpreted_data.get_strings(self.get_file()))
+		
 
 # If you call idamous.py, run this.
 if __name__ == '__main__':
+
 	print 'Creating idamous instance'
 	idamous = Idamous()
 	
@@ -167,3 +178,4 @@ if __name__ == '__main__':
 			break;
 		else:
 			print "Command not recognized. Try again or type 'help'."
+
