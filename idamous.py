@@ -64,13 +64,14 @@ if __name__ == '__main__':
     if "." in binary:
         splitFile = binary.split(".")[-2]
         splitFile = splitFile.split("/")[-1]
-    
+
+    # Assumes it will receive a file with an extension    
     idamous.set_result_directory("./results/" + splitFile)
     # This could be dangerous...
     subprocess.Popen(["rm", "-rf", idamous.get_result_directory()])
     subprocess.Popen(["mkdir", idamous.get_result_directory()])
 
-    # Run some test functions
+    # Get raw data
     raw_data = raw.File.File(idamous.get_file())
     
     print 'Filename:', raw_data.get_name()
@@ -81,7 +82,30 @@ if __name__ == '__main__':
     print 'File MD5:', raw_data.get_md5()
     print 'File SHA1:', raw_data.get_sha1()
     
+    raw_file = idamous.get_result_directory() + "/raw_data.txt"
+
+    # Open file to write raw data, create one if necessary
+    if not os.path.isfile(raw_file):
+        subprocess.Popen(["touch", raw_file])
+    f = open(raw_file, "w")
+    
+    f.write("Filename: %s\n" % raw_data.get_name())
+    f.write('File extension: %s\n' % raw_data.get_extension())
+    f.write('File size: %s\n' % raw_data.get_size())
+    f.write('File inode: %s\n' % raw_data.get_inode())
+    f.write('File path: %s\n' % raw_data.get_path())
+    f.write('File MD5: %s\n' % raw_data.get_md5())
+    f.write('File SHA1: %s\n' % raw_data.get_sha1())
+    f.close()
+
+    # Get extracted data
     extracted_data = extract.Extract.Extract(idamous.get_file())
     
-    print 'Filetype:', extracted_data.get_filetype()
+    extracted_file = idamous.get_result_directory() + "/extracted_data.txt"
+    if not os.path.isfile(extracted_file):
+        subprocess.Popen(["touch", extracted_file])
+    e = open(extracted_file, "w")
 
+    print 'Filetype:', extracted_data.get_filetype()
+    e.write('Filetype: %s\n' % extracted_data.get_filetype())
+    e.close()
