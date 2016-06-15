@@ -61,12 +61,15 @@ if __name__ == '__main__':
     
     # Creates a directory for the results of the Idamous tests
     idamous.set_file(binary)
+
     if "." in binary:
         splitFile = binary.split(".")[-2]
         splitFile = splitFile.split("/")[-1]
-
-    # Assumes it will receive a file with an extension    
+    else:
+	splitFile = binary.split("/")[-1]
+	
     idamous.set_result_directory("./results/" + splitFile)
+
     # This could be dangerous...
     subprocess.Popen(["rm", "-rf", idamous.get_result_directory()])
     subprocess.Popen(["mkdir", idamous.get_result_directory()])
@@ -109,3 +112,8 @@ if __name__ == '__main__':
     print 'Filetype:', extracted_data.get_filetype()
     e.write('Filetype: %s\n' % extracted_data.get_filetype())
     e.close()
+    
+    #Get interpreted Data
+    interpreted_data = interpret.Interpret.Interpret(idamous.get_file())
+    
+    print 'Strings:', interpreted_data.get_strings(binary)
