@@ -147,12 +147,21 @@ if __name__ == '__main__':
 	idamous = Idamous()
 	
 	# Primary control loop
-	print "IDAMOUS: Integrated Framework for Reverse Engineering Software"
+	print ""
+	print "IDAMOUS:  Integrated Framework for Reverse Engineering Software"
+	print "---------------------------------------------------------------"
+	print "Begin by loading your binay with the 'load [yourfile]' command."
+	print "Type 'help' to see all available commands!"
+	print ""
+	
+	#shorten the commands at some point for easier use
+	#a command history function would be very nice but not a necessity
 	while True:
 		sys.stdout.flush()
 		sys.stdout.write("idamous->")
 		sys.stdout.flush()
 		cmd = raw_input()
+		cmd = cmd.lower()
 		cmd = cmd.split(" ")
 		
 		print "cmd[0] is: %s" % cmd[0]
@@ -176,8 +185,10 @@ if __name__ == '__main__':
 
 		elif cmd[0] == "load":
 			idamous.load_file(cmd)
-
+		
+		# 'quit' does not seem to work while exit does
 		elif cmd[0] == "quit" or cmd[0] == "exit":
+			print "Thanks for using Idamous!"
 			break;
 		else:
 			print "Command not recognized. Try again or type 'help'."

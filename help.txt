@@ -10,4 +10,5 @@ get_interpreted
 	Gets interpreted data about the currently loaded file: strings, ...
 get_raw
 	Gets raw data about the currently loaded file: filename, file extension, file size, inode, path, MD5 sum, and SHA1 sum
-	
+quit
+	Exits Idamous
