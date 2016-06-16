@@ -3,6 +3,7 @@
 import subprocess
 import os
 import sys
+
 from importlib import import_module
 from plugins import *
 
@@ -138,6 +139,15 @@ class Idamous:
 		
 		print 'Strings: %s' % interpreted_data.get_strings(self.get_file())
 		i.write('Strings: %s\n' % interpreted_data.get_strings(self.get_file()))
+
+		print 'Header Information: %s' % interpreted_data.get_header(self.get_file())
+		i.write('Header Information: %s' % interpreted_data.get_header(self.get_file()))
+		
+		print 'Imports: %s' % interpreted_data.get_imports(self.get_file())
+		i.write('Imports: %s' % interpreted_data.get_imports(self.get_file()))
+		
+		print 'Opcodes: %s' % interpreted_data.get_opcodes(self.get_file())
+		i.write('Opcodes: %s' % interpreted_data.get_opcodes(self.get_file()))
 		
 
 # If you call idamous.py, run this.
@@ -186,7 +196,7 @@ if __name__ == '__main__':
 		elif cmd[0] == "load":
 			idamous.load_file(cmd)
 		
-		# 'quit' does not seem to work while exit does
+		# 'quit' does not seem to work before a file is loaded while exit does
 		elif cmd[0] == "quit" or cmd[0] == "exit":
 			print "Thanks for using Idamous!"
 			break;
