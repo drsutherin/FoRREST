@@ -1,7 +1,0 @@
-Filename: crackme0x00a
-File extension: 
-File size: 7367
-File inode: 21237880
-File path: /home/reuintern/challenges
-File MD5: a57c2a604ea978c1a0e10374a4df8397
-File SHA1: fbf36ae296c612eea58b08c25f44178d3b3c0814

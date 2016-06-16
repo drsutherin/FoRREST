@@ -9,12 +9,15 @@ class Interpret:
 
     #returns the strings from the binary
     def get_strings(self, binary):       
-	output = subprocess.Popen(['strings', binary], stdout=subprocess.PIPE).communicate()[0]
+	output = subprocess.Popen(['strings', binary], stdout=subprocess.PIPE)
+	output, error = output.communicate()
         return output
-    
-    #returns the elfheader from the binary    
-    #def get_elf(self):
 
+    #returns the programs header information from the binary    
+    def get_elf(self):
+	output = subprocess.Popen(['objdump', '-h' , binary], stdout = subprocess.PIPE)
+	output, error = output.communicate()
+	return output
     
     #def get_imports(self):
     
