@@ -18,14 +18,14 @@ This framework is currently designed for Linux
 To run the program:
 
 ```
-python idamous.py
+python Idamous.py
 ```
 
 ## Extending
 To extend the program, just import idamous.
 
 ```
-import idamous
+import Idamous
 ```
 
 # Levels of Representation
