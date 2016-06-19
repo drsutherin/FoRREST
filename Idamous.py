@@ -2,10 +2,7 @@
 
 import subprocess
 import os
-from importlib import import_module
 from plugins import *
-
-# from plugins.elf import elf
 
 class Idamous:
     
