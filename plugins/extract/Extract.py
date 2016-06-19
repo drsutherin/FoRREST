@@ -76,6 +76,8 @@ class Extract:
                 file = random.out
                 returns "GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4."
         """
+        # out, err = self.idamous._shell('objdump', ["-s", "--section", ".comment", self.filename])
+
         return ''
         
     def get_elf_header(self, item = None):
