@@ -8,17 +8,7 @@ class Interpret:
 
 
     def get_opcodes(self):
-        cmd = ['objdump']
-        cmd.append('-d')
-        cmd.append(self.filename)
-
-        terminal_output = []
-
-        output = subprocess.Popen(cmd, stdout = subprocess.PIPE)
-
-        return terminal_output
-
-	"""
+    	"""
 			Returns a list of the assembly code in binary.
 
 			( For Cole/David
@@ -40,10 +30,43 @@ class Interpret:
 					'4883ec20',
 					etc
 				]
-	"""
-	pass
+		"""
+        cmd = ['objdump']
+        cmd.append('-d')
+        cmd.append(self.filename)
+
+        terminal_output = []
+
+        output = subprocess.Popen(cmd, stdout = subprocess.PIPE)
+
+        return terminal_output
 
 	def get_strings(self):
+		"""
+            Returns a list of strings found in the binary. The string must
+            be four consecutive printable ASCII characters.
+            
+            ( For Cole/David
+                Command: strings filename
+                Output:
+                    /lib64/ld-linux-x86-64.so.2
+                    libc.so.6
+                    __isoc99_scanf
+                    puts
+                    printf
+                Comments:
+                    Just return terminal_output.split()
+            )
+            
+            Example:
+                file = random.out
+                returns [
+                    '/lib64/ld-linux-x86-64.so.2',
+                    'libc.so.6'
+                    '__isoc99_scanf',
+                    etc
+                ]
+        """
 		cmd = ['strings']
 		cmd.append(self.filename)
 
@@ -64,6 +87,31 @@ class Interpret:
 	pass
 
 	def get_imports(self):
+		"""
+            Returns a list of all the functions the binary references 
+            from a linked file object.
+            
+            ( For Cole/David
+                Command: nm -C --dynamic filename
+                Output:
+                    w __gmon_start__
+                    U __isoc99_scanf
+                    U __libc_start_main
+                    U printf
+                    U puts
+                Comments:
+                    We want the ones with a U.
+            )
+            
+            Example:
+                file = random.out
+                returns [
+                    '__isoc99_scanf',
+                    '__libc_start_main',
+                    'printf',
+                    etc
+                ]
+        """
 		cmd = ['nm']
 		cmd.append('-C')
 		cmd.append('--dynamic')
