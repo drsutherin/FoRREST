@@ -1,3 +1,4 @@
+
 import subprocess
 
 class Interpret:
@@ -6,43 +7,63 @@ class Interpret:
         self.idamous = idamous
         self.filename = self.idamous.get_file()
 
-
     def get_opcodes(self):
-    	"""
-			Returns a list of the assembly code in binary.
+        """
+            Returns a list of the assembly code in binary.
 
-			( For Cole/David
-				Command: objdump -d filename
-				Output:
-					00000000004005ed <main>:
-					4005ed:       55                      push   %rbp
-					4005ee:       48 89 e5                mov    %rsp,%rbp
-					4005f1:       48 83 ec 20             sub    $0x20,%rsp
-				Commments:
-					This function should return the text in the middle.
-			)
+            ( For Cole/David
+                Command: objdump -d filename
+                Output:
+                    00000000004005ed <main>:
+                    4005ed:       55                      push   %rbp
+                    4005ee:       48 89 e5                mov    %rsp,%rbp
+                    4005f1:       48 83 ec 20             sub    $0x20,%rsp
+                Commments:
+                    This function should return the text in the middle.
+            )
 
-			Example:
-				file = random.out
-				returns [
-					'55',
-					'4889e5',
-					'4883ec20',
-					etc
-				]
-		"""
-        cmd = ['objdump']
-        cmd.append('-d')
-        cmd.append(self.filename)
+            Example:
+                file = random.out
+                returns [
+                    '55',
+                    '4889e5',
+                    '4883ec20',
+                    etc
+                ]
+        """
+        out, err = self.idamous._shell('objdump', ['-d', self.filename])
+        
+        instructions = {}
+        namespace = []
+        
+        for x in out:
+            x = x.split()
+            
+            if len(x) == 2:
+                if x[1][0] == '<' and x[1][-2] == '>' and x[1][-1] == ':':
+                    namespace.append(x[1][1:-2])
+                    if namespace[-1] not in instructions:
+                        instructions[namespace[-1]] = []
+            
+            elif len(x) >= 2:
+                temp = []
+                if x[0][-1] == ':':
+                    temp = []
+                    
+                    for i in range(1, len(x)):
+                        if len(x[i]) == 2:
+                            temp.append(x[i])
+                        else:
+                            break
+                        
+                    if len(temp) > 0:
+                        if len(namespace) > 0 and namespace[-1] in instructions:
+                                instructions[namespace[-1]].append(temp)
 
-        terminal_output = []
+        return namespace, instructions
 
-        output = subprocess.Popen(cmd, stdout = subprocess.PIPE)
-
-        return terminal_output
-
-	def get_strings(self):
-		"""
+    def get_strings(self):
+        """
             Returns a list of strings found in the binary. The string must
             be four consecutive printable ASCII characters.
             
@@ -67,27 +88,12 @@ class Interpret:
                     etc
                 ]
         """
-		cmd = ['strings']
-		cmd.append(self.filename)
+        out, err = self.idamous._shell('strings', self.filename)
 
-		terminal_output = []
+        return out
 
-		output = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-	
-		while True:
-			line = output.stdout.readline()
-			if line != "":
-				line = line.rstrip()
-				terminal_output.append(line)
-			else:
-				break
-
-		return terminal_output
-
-	pass
-
-	def get_imports(self):
-		"""
+    def get_imports(self):
+        """
             Returns a list of all the functions the binary references 
             from a linked file object.
             
@@ -112,69 +118,46 @@ class Interpret:
                     etc
                 ]
         """
-		cmd = ['nm']
-		cmd.append('-C')
-		cmd.append('--dynamic')
-		cmd.append(self.filename)
+        stdout = self.idamous._shell_std('nm', ['-C', '--dynamic', self.filename])
+        out, err = self.idamous._shell('grep', 'U', stdout)
 
-		cmd2 = ['grep']
-		cmd2.append(' U ')
+        return [x.split()[1] for x in out]
 
-		terminal_output = []
+    def get_exports(self):
+        """
+            Returns a list of functions and variables that the binary
+            makes available to outside programs.
 
-		process1 = subprocess.Popen(cmd, stdout = subprocess.PIPE)
-		process2 = subprocess.Popen(cmd2, stdin = process1.stdout, stdout = subprocess.PIPE)
+            ( For Cole/David
+                Comments:
+                    I'm not too sure on this one. I don't have any
+                    .so files laying around. Maybe email Doctor Bryant?
 
-		while True:
-			line = process2.stdout.readline()
-			if line != "":
-				line = line.lstrip(' ')
-				line = line.rstrip()
-				data = line.split(' ')
-				terminal_output.append(data[1])
-			else:
-				break
+                    At any rate, what you're looking for on Google is:
+                    "nm get exported functions".
 
-		return terminal_output
+                    I think it might be that things starting with T
+                    are functions that are exported.
+            )
 
-	pass
+            Returns [
+                'printf'
+            ]
+        """
+        pass
 
+    def get_header_information(self):
+        """
+            Returns the header information for a file.
 
-	def get_exports(self):
-		"""
-			Returns a list of functions and variables that the binary
-			makes available to outside programs.
+            ( For Cole/David
+                Comments:
+                    I'm not too sure what they want from this. The description
+                    just says "structural information about how the program is
+                    organized." I would email Doctor Bryant.
+            )
 
-			( For Cole/David
-				Comments:
-					I'm not too sure on this one. I don't have any
-					.so files laying around. Maybe email Doctor Bryant?
-
-					At any rate, what you're looking for on Google is:
-					"nm get exported functions".
-
-					I think it might be that things starting with T
-					are functions that are exported.
-			)
-
-			Returns [
-				'printf'
-			]
-		"""
-	pass
-
-	def get_header_information(self):
-		"""
-			Returns the header information for a file.
-
-			( For Cole/David
-				Comments:
-					I'm not too sure what they want from this. The description
-					just says "structural information about how the program is
-					organized." I would email Doctor Bryant.
-			)
-
-			Returns maybe a list? Maybe Dictionary?
-		"""
-	pass
+            Returns maybe a list? Maybe Dictionary?
+        """
+        pass
 
