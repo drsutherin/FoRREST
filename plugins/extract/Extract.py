@@ -43,7 +43,7 @@ class Extract:
                 file = random.out
                 returns "5.4.0"
         """
-        return ''
+        return self.get_elf_header('Version')
         
     def get_architecture(self):
         """
@@ -53,7 +53,7 @@ class Extract:
                 file = random.out
                 returns "x86-64"
         """
-        return ''
+        return self.get_elf_header('Machine')
         
     def get_compiler(self):
         """
@@ -77,6 +77,22 @@ class Extract:
                 returns "GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4."
         """
         return ''
+        
+    def get_elf_header(self, item = None):
+        out, err = self.idamous._shell('readelf', ["-h", self.filename])
+
+        temp = [x.split(':', 1) for x in out]
+        temp = [y.strip() for x in temp for y in x]
+        
+        return_value = dict(zip(temp[::2], temp[1::2]))
+        
+        if item:
+            if item in return_value:
+                return_value = return_value[item]
+            else:
+                return_value = ''
+                
+        return return_value
         
     def get_sections(self):
         """
