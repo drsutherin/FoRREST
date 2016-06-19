@@ -18,7 +18,10 @@ class Idamous:
         self.current_file = None
     
     def set_file(self, params):
-        self.current_file = params[0]
+        if type(params) == str:
+            self.current_file = params
+        else:
+            self.current_file = params[0]
     
     def get_file(self, params = None):
         return self.current_file
@@ -76,12 +79,47 @@ class Idamous:
     def get_help(self, params = None):
         print "This is the help menu!"
     
-    def _call_shell_function(self, commandName, args):
+    def _shell(self, commandName, args, stdin=None):
         """
             Make a call to the terminal and return the output.
         """
-        output = subprocess.check_output([commandName].extend(args))
-        return output
+        cmd = [commandName]
+        if type(args) == str:
+            cmd.append(args)
+        else:
+            cmd.extend(args)
+            
+        print 'running', cmd
+        
+        if stdin:
+            out, err = subprocess.Popen(cmd, stdin=stdin, stdout=subprocess.PIPE).communicate()
+        else:
+            out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
+        
+        if out: out = out.splitlines()
+        if err: err = err.splitlines()
+        
+        return out, err
+        
+    def _shell_std(self, commandName, args, stdin=None):
+        """
+            Make a call to the terminal and return the output.
+        """
+        cmd = [commandName]
+        if type(args) == str:
+            cmd.append(args)
+        else:
+            cmd.extend(args)
+            
+        print 'running', cmd
+        
+        if stdin:
+            out = subprocess.Popen(cmd, stdin=stdin, stdout=subprocess.PIPE)
+        else:
+            out = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+            
+        return out.stdout
+        
 
 def start_shell():
     print ""
