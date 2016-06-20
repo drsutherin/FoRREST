@@ -78,12 +78,17 @@ class Extract:
                 file = random.out
                 returns "GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4."
         """
-        print self.get_section_ascii('.eh_frame')
-        
-        return ''
+        return self.get_section_ascii('.comment').strip('\x00')
         
     def get_section_ascii(self, section):
-        pass
+        temp = self.get_section_hex(section)
+        
+        word = ""
+        temp = [z for x in temp for y in x for z in y]
+        for x in zip(temp[::2], temp[1::2]):
+            word += chr(int(x[0] + x[1], 16))
+        
+        return word
         
     def get_section_hex(self, section):
         out, err = self.idamous._shell('objdump', ['-s', '--section', section, self._get_file()])
