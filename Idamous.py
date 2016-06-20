@@ -13,6 +13,9 @@ class Idamous:
         # Change to not being hardcoded later
         self.operating_system = 'linux'
         self.current_file = None
+        self.raw = raw.File.File(self)
+        self.extract = extract.Extract.Extract(self)
+        self.interpret = interpret.Interpret.Interpret(self)
     
     def set_file(self, params):
         if type(params) == str:
@@ -27,14 +30,12 @@ class Idamous:
         output = {}
 
         if self.current_file:
-            raw_data = raw.File.File(self)
-
-            output['name'] = raw_data.get_name()
-            output['extension'] = raw_data.get_extension()
-            output['size'] = raw_data.get_size()
-            output['md5'] = raw_data.get_md5()
-            output['sha1'] = raw_data.get_sha1()
-            output['sha256'] = raw_data.get_sha256()
+            output['name'] = self.raw.get_name()
+            output['extension'] = self.raw.get_extension()
+            output['size'] = self.raw.get_size()
+            output['md5'] = self.raw.get_md5()
+            output['sha1'] = self.raw.get_sha1()
+            output['sha256'] = self.raw.get_sha256()
         else:
             print "No file selected! Please select with",\
                 "idamous.set_file(<filename>)"
@@ -45,12 +46,11 @@ class Idamous:
         output = {}
         
         if self.current_file:
-            extracted_data = extract.Extract.Extract(self)
-            output['type'] = extracted_data.get_filetype()
-            output['version'] = extracted_data.get_version()
-            output['architecture'] = extacted_data.get_architecture()
-            output['compiler'] = extracted_data.get_compiler()
-            output['sections'] = extracted_data.get_sections()
+            output['type'] = self.extract.get_filetype()
+            output['version'] = self.extract.get_version()
+            output['architecture'] = self.extract.get_architecture()
+            output['compiler'] = self.extract.get_compiler()
+            output['sections'] = self.extract.get_sections()
         else:
             print "No file selected! Please select with",\
                 "idamous.set_file(<filename>)"
@@ -61,12 +61,11 @@ class Idamous:
         output = {}
         
         if self.current_file:
-            interpreted_data = interpret.Interpret.Interpret(self)
-            output['disassembly'] = interpreted_data.get_filetype()
-            output['version'] = interpreted_data.get_version()
-            output['architecture'] = interpreted_data.get_architecture()
-            output['compiler'] = interpreted_data.get_compiler()
-            output['sections'] = interpreted_data.get_sections()
+            output['disassembly'] = self.interpret.get_filetype()
+            output['version'] = self.interpret.get_version()
+            output['architecture'] = self.interpret.get_architecture()
+            output['compiler'] = self.interpret.get_compiler()
+            output['sections'] = self.interpret.get_sections()
         else:
             print "No file selected! Please select with",\
                 "idamous.set_file(<filename>)"
@@ -157,4 +156,9 @@ def start_shell():
 
 # If you call idamous.py, run this.
 if __name__ == '__main__':
-    start_shell()
+    # start_shell()
+    idamous = Idamous()
+    idamous.set_file('test_binaries/custom_binaries/generate_fib.out')
+    print idamous.get_raw_metadata()
+    print idamous.get_extracted_data()
+    # print idamous.get_interpreted_data()

@@ -5,7 +5,9 @@ class Interpret:
 
     def __init__(self, idamous):
         self.idamous = idamous
-        self.filename = self.idamous.get_file()
+        
+    def _get_file(self):
+        return self.idamous.get_file()
 
     def get_opcodes(self):
         """
@@ -31,7 +33,7 @@ class Interpret:
                     etc
                 ]
         """
-        out, err = self.idamous._shell('objdump', ['-d', self.filename])
+        out, err = self.idamous._shell('objdump', ['-d', self._get_file()])
         
         instructions = {}
         namespace = []
@@ -88,7 +90,7 @@ class Interpret:
                     etc
                 ]
         """
-        out, err = self.idamous._shell('strings', self.filename)
+        out, err = self.idamous._shell('strings', self._get_file())
 
         return out
 
@@ -118,7 +120,7 @@ class Interpret:
                     etc
                 ]
         """
-        stdout = self.idamous._shell_std('nm', ['-C', '--dynamic', self.filename])
+        stdout = self.idamous._shell_std('nm', ['-C', '--dynamic', self._get_file()])
         out, err = self.idamous._shell('grep', 'U', stdout)
 
         return [x.split()[1] for x in out]

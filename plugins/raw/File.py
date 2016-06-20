@@ -5,8 +5,11 @@ import hashlib
 class File:
     
     def __init__(self, idamous):
-        self.filename = idamous.get_file()
+        self.idamous = idamous
         self.file = None
+        
+    def _get_file(self):
+        return self.idamous.get_file()
         
     def get_name(self):
         """
@@ -16,7 +19,7 @@ class File:
                 file = /cake/awesome/sweet.py
                 returns: "sweet.py" 
         """
-        return os.path.basename(self.filename)
+        return os.path.basename(self._get_file())
         
     def get_extension(self):
         """
@@ -26,7 +29,7 @@ class File:
                 file = /cake/awesome/sweet.py
                 returns: "py"
         """
-        temp = self.filename.split('.')
+        temp = self._get_file().split('.')
         ext = ""
         
         # Check to see if there is a dot.
@@ -43,7 +46,7 @@ class File:
                 3343 idamous.py
                 returns: 3343
         """
-        return os.stat(self.filename).st_size
+        return os.stat(self._get_file()).st_size
         
     def get_inode(self):
         """
@@ -53,7 +56,7 @@ class File:
                 303 idamous.py
                 returns: 303
         """
-        return os.stat(self.filename).st_ino
+        return os.stat(self._get_file()).st_ino
     
     def get_path(self):
         """
@@ -66,7 +69,7 @@ class File:
                 file = plugins/raw/Raw.py
                 returns: "plugins/raw"
         """
-        return os.path.dirname(self.filename)
+        return os.path.dirname(self._get_file())
         
     def get_md5(self):
         """
@@ -77,19 +80,19 @@ class File:
                 returns: "943172131622f261d9af95e1634159d9"
         """
         hash_algo = hashlib.md5()
-        return File.hash_file(self.filename, hash_algo)
+        return File.hash_file(self._get_file(), hash_algo)
         
     def get_sha1(self):
         hash_algo = hashlib.sha1()
-        return File.hash_file(self.filename, hash_algo)
+        return File.hash_file(self._get_file(), hash_algo)
         
     def get_sha256(self):
         hash_algo = hashlib.sha256()
-        return File.hash_file(self.filename, hash_algo)
+        return File.hash_file(self._get_file(), hash_algo)
     
     def get_sha512(self):
         hash_algo = hashlib.sha512()
-        return File.hash_file(self.filename, hash_algo)
+        return File.hash_file(self._get_file(), hash_algo)
 
     def read_chunck(self, chunksize=4096):
         """
@@ -101,7 +104,7 @@ class File:
             file.
         """
         if self.file == None:
-            self.file = open(self.filename, 'rb')
+            self.file = open(self._get_file(), 'rb')
 
         chunk = self.file.read(chunksize)
         if not chunk:
