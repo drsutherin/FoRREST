@@ -4,11 +4,11 @@ IDAMOUS HELP
 FUNCTIONS:
 load [file]
 	Loads the specified file and creates a directory for the results of tests
-get_extracted
+get_extracted_data
 	Gets extracted data about the currently loaded file
-get_interpreted
+get_interpreted_data
 	Gets interpreted data about the currently loaded file: strings, ...
-get_raw
+get_raw_data
 	Gets raw data about the currently loaded file: filename, file extension, file size, inode, path, MD5 sum, and SHA1 sum
 quit
 	Exits Idamous
