@@ -61,11 +61,11 @@ class Idamous:
         output = {}
         
         if self.current_file:
-            output['disassembly'] = self.interpret.get_filetype()
-            output['version'] = self.interpret.get_version()
-            output['architecture'] = self.interpret.get_architecture()
-            output['compiler'] = self.interpret.get_compiler()
-            output['sections'] = self.interpret.get_sections()
+            output['opcodes'] = self.interpret.get_opcodes()
+            output['strings'] = self.interpret.get_strings()
+            output['imports'] = self.interpret.get_imports()
+            output['exports'] = self.interpret.get_exports()
+            output['header_information'] = self.interpret.get_header_information()
         else:
             print "No file selected! Please select with",\
                 "idamous.set_file(<filename>)"
@@ -161,4 +161,4 @@ if __name__ == '__main__':
     idamous.set_file('test_binaries/custom_binaries/generate_fib.out')
     print idamous.get_raw_metadata()
     print idamous.get_extracted_data()
-    # print idamous.get_interpreted_data()
+    print idamous.get_interpreted_data()

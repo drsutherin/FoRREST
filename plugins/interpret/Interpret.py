@@ -146,7 +146,7 @@ class Interpret:
                 'printf'
             ]
         """
-        pass
+        return ''
 
     def get_header_information(self):
         """
@@ -161,5 +161,5 @@ class Interpret:
 
             Returns maybe a list? Maybe Dictionary?
         """
-        pass
+        return ''
 
