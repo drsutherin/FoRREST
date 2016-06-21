@@ -2,10 +2,7 @@
 
 import subprocess
 import os
-from importlib import import_module
 from plugins import *
-
-# from plugins.elf import elf
 
 class Idamous:
     
@@ -16,8 +13,12 @@ class Idamous:
         # Change to not being hardcoded later
         self.operating_system = 'linux'
         self.current_file = None
+        self.raw = raw.File.File(self)
+        self.extract = extract.Extract.Extract(self)
+        self.interpret = interpret.Interpret.Interpret(self)
     
     def set_file(self, params):
+
         try:
             f = open(params[0])
             f.close()
@@ -25,6 +26,11 @@ class Idamous:
             print "File %s loaded successfully." % params[0]
         except IOError:
             print "That file does not exist, please try again."
+
+        if type(params) == str:
+            self.current_file = params
+        else:
+            self.current_file = params[0]
     
     def get_file(self, params = None):
         return self.current_file
@@ -33,14 +39,12 @@ class Idamous:
         output = {}
 
         if self.current_file:
-            raw_data = raw.File.File(self)
-
-            output['name'] = raw_data.get_name()
-            output['extension'] = raw_data.get_extension()
-            output['size'] = raw_data.get_size()
-            output['md5'] = raw_data.get_md5()
-            output['sha1'] = raw_data.get_sha1()
-            output['sha256'] = raw_data.get_sha256()
+            output['name'] = self.raw.get_name()
+            output['extension'] = self.raw.get_extension()
+            output['size'] = self.raw.get_size()
+            output['md5'] = self.raw.get_md5()
+            output['sha1'] = self.raw.get_sha1()
+            output['sha256'] = self.raw.get_sha256()
         else:
             print "No file selected! Please select with",\
                 "load [filename]"
@@ -51,12 +55,11 @@ class Idamous:
         output = {}
         
         if self.current_file:
-            extracted_data = extract.Extract.Extract(self)
-            output['type'] = extracted_data.get_filetype()
-            output['version'] = extracted_data.get_version()
-            output['architecture'] = extacted_data.get_architecture()
-            output['compiler'] = extracted_data.get_compiler()
-            output['sections'] = extracted_data.get_sections()
+            output['type'] = self.extract.get_filetype()
+            output['version'] = self.extract.get_version()
+            output['architecture'] = self.extract.get_architecture()
+            output['compiler'] = self.extract.get_compiler()
+            output['sections'] = self.extract.get_sections()
         else:
             print "No file selected! Please select with",\
                 "load [filename]"
@@ -67,12 +70,11 @@ class Idamous:
         output = {}
         
         if self.current_file:
-            interpreted_data = interpret.Interpret.Interpret(self)
-            output['disassembly'] = interpreted_data.get_filetype()
-            output['version'] = interpreted_data.get_version()
-            output['architecture'] = interpreted_data.get_architecture()
-            output['compiler'] = interpreted_data.get_compiler()
-            output['sections'] = interpreted_data.get_sections()
+            output['opcodes'] = self.interpret.get_opcodes()
+            output['strings'] = self.interpret.get_strings()
+            output['imports'] = self.interpret.get_imports()
+            output['exports'] = self.interpret.get_exports()
+            output['header_information'] = self.interpret.get_header_information()
         else:
             print "No file selected! Please select with",\
                 "idamous.set_file(<filename>)"
@@ -84,12 +86,47 @@ class Idamous:
 	for line in f:
 		print line
     
-    def _call_shell_function(self, commandName, args):
+    def _shell(self, commandName, args, stdin=None):
         """
             Make a call to the terminal and return the output.
         """
-        output = subprocess.check_output([commandName].extend(args))
-        return output
+        cmd = [commandName]
+        if type(args) == str:
+            cmd.append(args)
+        else:
+            cmd.extend(args)
+            
+        print 'running', cmd
+        
+        if stdin:
+            out, err = subprocess.Popen(cmd, stdin=stdin, stdout=subprocess.PIPE).communicate()
+        else:
+            out, err = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
+        
+        if out: out = out.splitlines()
+        if err: err = err.splitlines()
+        
+        return out, err
+        
+    def _shell_std(self, commandName, args, stdin=None):
+        """
+            Make a call to the terminal and return the output.
+        """
+        cmd = [commandName]
+        if type(args) == str:
+            cmd.append(args)
+        else:
+            cmd.extend(args)
+            
+        print 'running', cmd
+        
+        if stdin:
+            out = subprocess.Popen(cmd, stdin=stdin, stdout=subprocess.PIPE)
+        else:
+            out = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+            
+        return out.stdout
+        
 
 def start_shell():
     print ""
@@ -132,4 +169,9 @@ def start_shell():
 
 # If you call idamous.py, run this.
 if __name__ == '__main__':
-    start_shell()
+    # start_shell()
+    idamous = Idamous()
+    idamous.set_file('test_binaries/custom_binaries/generate_fib.out')
+    print idamous.get_raw_metadata()
+    print idamous.get_extracted_data()
+    print idamous.get_interpreted_data()
