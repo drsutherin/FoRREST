@@ -1,2 +1,9 @@
-set_file test_binaries/custom_binaries/generate_fib.out
-get_raw_metadata
+
+# Running terminal
+    set_file test_binaries/custom_binaries/generate_fib.out
+    get_raw_metadata
+
+# terminal
+    python Idamous.py -c test_binaries/custom_binaries/generate_fib.out "&interpret.get_strings"
+    python Idamous.py . .
+    python Idamous.py test_binaries/custom_binaries/generate_fib.out

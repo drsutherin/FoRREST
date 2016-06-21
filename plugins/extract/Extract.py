@@ -8,7 +8,9 @@ class Extract:
     
     def __init__(self, idamous):
         self.idamous = idamous
-        self.filename = self.idamous.get_file()
+        
+    def _get_file(self):
+        return self.idamous.get_file()
 
     def get_filetype(self, meme = True):
         """
@@ -31,7 +33,7 @@ class Extract:
             good = False
             
         if good:
-            data = magic.from_file(self.filename, meme)
+            data = magic.from_file(self._get_file(), meme)
         
         return data
     
@@ -43,7 +45,7 @@ class Extract:
                 file = random.out
                 returns "5.4.0"
         """
-        return ''
+        return self.get_elf_header('Version')
         
     def get_architecture(self):
         """
@@ -53,7 +55,7 @@ class Extract:
                 file = random.out
                 returns "x86-64"
         """
-        return ''
+        return self.get_elf_header('Machine')
         
     def get_compiler(self):
         """
@@ -76,7 +78,40 @@ class Extract:
                 file = random.out
                 returns "GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4."
         """
-        return ''
+        return self.get_section_ascii('.comment').strip('\x00')
+        
+    def get_section_ascii(self, section):
+        temp = self.get_section_hex(section)
+        
+        word = ""
+        temp = [z for x in temp for y in x for z in y]
+        for x in zip(temp[::2], temp[1::2]):
+            word += chr(int(x[0] + x[1], 16))
+        
+        return word
+        
+    def get_section_hex(self, section):
+        out, err = self.idamous._shell('objdump', ['-s', '--section', section, self._get_file()])
+        out = map(lambda x: x.lstrip(), out)
+        out = [x.split(' ', 5)[1:5] for x in out[4:]]
+        
+        return out
+        
+    def get_elf_header(self, item = None):
+        out, err = self.idamous._shell('readelf', ["-h", self._get_file()])
+
+        temp = [x.split(':', 1) for x in out]
+        temp = [y.strip() for x in temp for y in x]
+        
+        return_value = dict(zip(temp[::2], temp[1::2]))
+        
+        if item:
+            if item in return_value:
+                return_value = return_value[item]
+            else:
+                return_value = ''
+                
+        return return_value
         
     def get_sections(self):
         """
@@ -103,4 +138,6 @@ class Extract:
                     etc
                 ]
         """
-        return []
+        out, err = self.idamous._shell('objdump', ['-h', self._get_file()])
+
+        return [x.strip().split()[1] for x in out[5:][::2]]
