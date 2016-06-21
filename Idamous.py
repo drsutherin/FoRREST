@@ -18,19 +18,16 @@ class Idamous:
         self.interpret = interpret.Interpret.Interpret(self)
     
     def set_file(self, params):
-
-        try:
-            f = open(params[0])
-            f.close()
-            self.current_file = params[0]
-            print "File %s loaded successfully." % params[0]
-        except IOError:
-            print "That file does not exist, please try again."
-
         if type(params) == str:
-            self.current_file = params
+            filename = params
         else:
-            self.current_file = params[0]
+            filename = params[0]
+        
+        if (os.path.isfile(filename)):
+            self.current_file = filename
+        else:
+            print "[-] That file does not exist!"
+        
     
     def get_file(self, params = None):
         return self.current_file
@@ -77,14 +74,13 @@ class Idamous:
             output['header_information'] = self.interpret.get_header_information()
         else:
             print "No file selected! Please select with",\
-                "idamous.set_file(<filename>)"
+                "load [filename]"
         
         return output
         
     def get_help(self, params = None):
-        f = open("help.txt")
-	for line in f:
-		print line
+        with open('help.txt', 'r') as f:
+            print f.read()
     
     def _shell(self, commandName, args, stdin=None):
         """
@@ -154,8 +150,7 @@ def start_shell():
             params = cmd.split()[1:]
             
             if func == "help": func = "get_help"
-            
-	    if func == "load": func = "set_file"
+            if func == "load": func = "set_file"
 	    
             if func in dir(idamous):
                 func = getattr(idamous, func)
@@ -171,7 +166,7 @@ def start_shell():
 if __name__ == '__main__':
     # start_shell()
     idamous = Idamous()
-    idamous.set_file('test_binaries/custom_binaries/generate_fib.out')
-    print idamous.get_raw_metadata()
+    idamous.set_file('test_binaries/custom_binaries/generate_fibb.out')
+    print idamous.get_raw_data()
     print idamous.get_extracted_data()
     print idamous.get_interpreted_data()
