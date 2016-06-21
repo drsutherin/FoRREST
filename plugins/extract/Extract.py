@@ -138,4 +138,6 @@ class Extract:
                     etc
                 ]
         """
-        return []
+        out, err = self.idamous._shell('objdump', ['-h', self._get_file()])
+
+        return [x.strip().split()[1] for x in out[5:][::2]]
