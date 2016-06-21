@@ -18,12 +18,18 @@ class Idamous:
         self.current_file = None
     
     def set_file(self, params):
-        self.current_file = params[0]
+        try:
+            f = open(params[0])
+            f.close()
+            self.current_file = params[0]
+            print "File %s loaded successfully." % params[0]
+        except IOError:
+            print "That file does not exist, please try again."
     
     def get_file(self, params = None):
         return self.current_file
         
-    def get_raw_metadata(self, params = None):
+    def get_raw_data(self, params = None):
         output = {}
 
         if self.current_file:
@@ -37,7 +43,7 @@ class Idamous:
             output['sha256'] = raw_data.get_sha256()
         else:
             print "No file selected! Please select with",\
-                "idamous.set_file(<filename>)"
+                "load [filename]"
 
         return output
         
@@ -53,7 +59,7 @@ class Idamous:
             output['sections'] = extracted_data.get_sections()
         else:
             print "No file selected! Please select with",\
-                "idamous.set_file(<filename>)"
+                "load [filename]"
         
         return output
         
@@ -74,7 +80,9 @@ class Idamous:
         return output
         
     def get_help(self, params = None):
-        print "This is the help menu!"
+        f = open("help.txt")
+	for line in f:
+		print line
     
     def _call_shell_function(self, commandName, args):
         """
@@ -110,6 +118,8 @@ def start_shell():
             
             if func == "help": func = "get_help"
             
+	    if func == "load": func = "set_file"
+	    
             if func in dir(idamous):
                 func = getattr(idamous, func)
                 try:
