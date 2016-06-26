@@ -27,7 +27,7 @@ class Interpret:
             Example:
                 file = random.out
                 returns [
-                    '55',
+                    '4008534', 55,
                     '4889e5',
                     '4883ec20',
                     etc
@@ -160,6 +160,9 @@ class Interpret:
             )
 
             Returns maybe a list? Maybe Dictionary?
+            
+            PEView - Windows only
+            
         """
         return ''
 
