@@ -1,9 +1,4 @@
 
-"""
-    Requirements:
-        * python-magic
-"""
-
 class Extract:
     
     def __init__(self, idamous):

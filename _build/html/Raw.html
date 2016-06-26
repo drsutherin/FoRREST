@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Raw &mdash; Idamous 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Idamous 1.0 documentation" href="index.html" />
+    <link rel="up" title="Plugins" href="Plugins.html" />
+    <link rel="next" title="Extract" href="Extract.html" />
+    <link rel="prev" title="Plugins" href="Plugins.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Extract.html" title="Extract"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Plugins.html" title="Plugins"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Idamous 1.0 documentation</a> &raquo;</li>
+          <li><a href="Idamous.html" >Documentation</a> &raquo;</li>
+          <li><a href="Plugins.html" accesskey="U">Plugins</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="raw">
+<h1>Raw<a class="headerlink" href="#raw" title="Permalink to this headline">¶</a></h1>
+<p>This is something I want to say that is not in the docstring.</p>
+<dl class="class">
+<dt id="Idamous.plugins.raw.File.File">
+<em class="property">class </em><tt class="descclassname">Idamous.plugins.raw.File.</tt><tt class="descname">File</tt><big>(</big><em>idamous</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_extension">
+<tt class="descname">get_extension</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the extension of the current file.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd>file = /cake/awesome/sweet.py
+returns: &#8220;py&#8221;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_inode">
+<tt class="descname">get_inode</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_inode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inode of the current file.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd>303 idamous.py
+returns: 303</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_md5">
+<tt class="descname">get_md5</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_md5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the MD5 sum for the file.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd>file = /cake/awesome/sweet.py
+returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the filename of the current file.</p>
+<dl class="docutils">
+<dt>Example: </dt>
+<dd>file = /cake/awesome/sweet.py
+returns: &#8220;sweet.py&#8221;</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_path">
+<tt class="descname">get_path</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the path to the file.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">file = /cake/awesome/sweet.py
+returns: &#8220;/cake/awesome&#8221;</p>
+<p class="last">file = plugins/raw/Raw.py
+returns: &#8220;plugins/raw&#8221;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_size">
+<tt class="descname">get_size</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of the current file in bytes.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd>3343 idamous.py
+returns: 3343</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="Idamous.plugins.raw.File.File.hash_file">
+<em class="property">static </em><tt class="descname">hash_file</tt><big>(</big><em>filename</em>, <em>hash_algo</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.hash_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a hash for &#64;filename based on the the &#64;hash_algo.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.read_chunck">
+<tt class="descname">read_chunck</tt><big>(</big><em>chunksize=4096</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.read_chunck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a chunck of the file. By default, the size is 4096.
+The function will start at the beginning and hold its position
+each read.
+Once the file has been completely read in, calling this function
+will return empty string (&#8216;&#8217;) and reset to the beginning of the
+file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.reset_read">
+<tt class="descname">reset_read</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.reset_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force reset the read_chunck method to start at the beginning.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Plugins.html"
+                        title="previous chapter">Plugins</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Extract.html"
+                        title="next chapter">Extract</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/Raw.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Extract.html" title="Extract"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Plugins.html" title="Plugins"
+             >previous</a> |</li>
+        <li><a href="index.html">Idamous 1.0 documentation</a> &raquo;</li>
+          <li><a href="Idamous.html" >Documentation</a> &raquo;</li>
+          <li><a href="Plugins.html" >Plugins</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Logan Rickert, Cole, David.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
