@@ -3,8 +3,8 @@
 htmldir=html
 stringtofind1="_static"
 stringtofind2="_sources"
-stringreplace1="html/static"
-stringreplace2="html/sources"
+stringreplace1="static"
+stringreplace2="sources"
 
 cd $htmldir
 
