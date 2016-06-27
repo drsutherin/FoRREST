@@ -137,7 +137,17 @@ class Interpret:
                 [str, ...] - A list of strings that are the names of exported
                 functions.
         """
-        return ''
+	out, err = self.idamous._shell('nm', ['-g',  self._get_file()])
+	
+	term_out = []
+
+	for x in out:
+	   if len(x.split()) == 3:
+	      term_out.append(x.split()[2])
+	   else:
+	      term_out.append(x.split()[1])
+
+	return term_out	
 
     def get_header_information(self):
         """
