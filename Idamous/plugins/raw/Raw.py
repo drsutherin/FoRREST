@@ -11,7 +11,7 @@ import os
 import hashlib
 
 
-class File:
+class Raw:
 
     def __init__(self, idamous):
         """

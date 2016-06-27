@@ -18,7 +18,7 @@ class Idamous:
         # Change to not being hardcoded later
         self.operating_system = 'linux'
         self.current_file = None
-        self.raw = raw.File.File(self)
+        self.raw = raw.Raw.Raw(self)
         self.extract = extract.Extract.Extract(self)
         self.interpret = interpret.Interpret.Interpret(self)
 
