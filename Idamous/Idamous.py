@@ -7,7 +7,7 @@ import os
 
 class Idamous:
 
-    def __init__(self):
+    def __init__(self, filename=None):
         """
             Description:
                 This sets up the class.
@@ -17,7 +17,7 @@ class Idamous:
         """
         # Change to not being hardcoded later
         self.operating_system = 'linux'
-        self.current_file = None
+        self.current_file = filename
         self.raw = raw.Raw.Raw(self)
         self.extract = extract.Extract.Extract(self)
         self.interpret = interpret.Interpret.Interpret(self)
