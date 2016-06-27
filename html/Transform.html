@@ -50,11 +50,112 @@
             
   <div class="section" id="transform">
 <h1>Transform<a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h1>
-<p>This is something I want to say that is not in the docstring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Platform:</th><td class="field-body">Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Class Authors:</th><td class="field-body">Authors: Logan Rickert, Cole Loewer, David Sutherin</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Standard:</th><td class="field-body">Flake8</td>
+</tr>
+</tbody>
+</table>
+<p>The main purpose of this class is to transform the interpred data.</p>
+<p>Requirements:</p>
+<ul class="simple">
+<li>radare2</li>
+<li>r2pipe</li>
+</ul>
 <dl class="class">
 <dt id="Idamous.plugins.transform.Transform.Transform">
 <em class="property">class </em><tt class="descclassname">Idamous.plugins.transform.Transform.</tt><tt class="descname">Transform</tt><big>(</big><em>idamous</em><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="method">
+<dt id="Idamous.plugins.transform.Transform.Transform.check_imports">
+<tt class="descname">check_imports</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform.check_imports" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Checks to make sure all of the required imports
+have been loaded.</dd>
+<dt>Returns:</dt>
+<dd>bool - if import was sucessful.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.transform.Transform.Transform.get_basic_blocks">
+<tt class="descname">get_basic_blocks</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform.get_basic_blocks" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets the directed graph of basic blocks that can be
+constructed by analyzing the boundaries and control
+flow of instructions.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.transform.Transform.Transform.get_data_references">
+<tt class="descname">get_data_references</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform.get_data_references" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>The location of data values derived from interpreting memory
+store and load operations.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.transform.Transform.Transform.get_disassembly">
+<tt class="descname">get_disassembly</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform.get_disassembly" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets the disassembly for a given file.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.transform.Transform.Transform.get_functions">
+<tt class="descname">get_functions</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform.get_functions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets the functions used in the program.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.transform.Transform.Transform.get_jump_targets">
+<tt class="descname">get_jump_targets</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform.get_jump_targets" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>The memory address offsets obtained by analyzing the targets
+of conditional and unconditional control flow change
+instructions.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.transform.Transform.Transform.get_mnemonics">
+<tt class="descname">get_mnemonics</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.transform.Transform.Transform.get_mnemonics" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets the portion of the assembly instruction that is related to
+the action being preformed.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 
@@ -104,7 +205,7 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2016, Logan Rickert, Cole, David.
+        &copy; Copyright 2016, Logan Rickert, Cole Lower, David Sutherin.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

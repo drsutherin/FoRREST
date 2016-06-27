@@ -51,7 +51,13 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Idamous.html">Idamous</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins.html">Plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Raw.html">Raw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Extract.html">Extract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Interpret.html">Interpret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Transform.html">Transform</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -65,6 +71,95 @@
 <li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
+<div class="section" id="readme">
+<h1>Readme<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="idamous">
+<h2>Idamous<a class="headerlink" href="#idamous" title="Permalink to this headline">¶</a></h2>
+<p>Reverse Engineering Framework</p>
+<p>Version 0.8</p>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of this project is to create a vulnerability anaylsis framework that
+combines existing tools into one package. It also makes it easier to create or
+install tools into the framework for use.</p>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>This framework is currently designed for Linux</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python 2.7</li>
+</ul>
+</div>
+<div class="section" id="running">
+<h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
+<p>To run the program:</p>
+<p><tt class="docutils literal"><span class="pre">`</span>
+<span class="pre">python</span> <span class="pre">Idamous.py</span>
+<span class="pre">`</span></tt></p>
+</div>
+<div class="section" id="extending">
+<h2>Extending<a class="headerlink" href="#extending" title="Permalink to this headline">¶</a></h2>
+<p>To extend the program, just import idamous.</p>
+<p><tt class="docutils literal"><span class="pre">`</span>
+<span class="pre">import</span> <span class="pre">Idamous</span>
+<span class="pre">`</span></tt></p>
+</div>
+<div class="section" id="levels-of-representation">
+<h2>Levels of Representation<a class="headerlink" href="#levels-of-representation" title="Permalink to this headline">¶</a></h2>
+<p>The information found in a binary can be represented in many ways and on
+many different levels. You start on a low-level with very simplistic information
+and as you extract data, you start to get higher-level information.</p>
+</div>
+<div class="section" id="level-0-raw-data">
+<h2><strong>Level 0 (Raw Data)</strong><a class="headerlink" href="#level-0-raw-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Filename</strong> - The name of the file that you are working with.</li>
+<li><strong>Extension</strong> - The name of the extension for the file you are working with</li>
+</ul>
+<p>if it&#8217;s present.</p>
+<ul class="simple">
+<li><strong>Size</strong> - The size of the file you are working with.</li>
+<li><strong>inode</strong> - The physical location the file on the file system.</li>
+<li><strong>Path</strong> - The path that leads to the file.</li>
+<li><strong>Checksums</strong> - The digest value obtained by running a hashing algorithm on the raw data.</li>
+</ul>
+</div>
+<div class="section" id="level-1-extracted-data">
+<h2><strong>Level 1 (Extracted Data)</strong><a class="headerlink" href="#level-1-extracted-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Filetype</strong> - The type of file which is denoted by a sequence of bits at the  start of a file. This is considered the mime type.</li>
+<li><strong>Version</strong> - The version numbers of the program (if used).</li>
+<li><strong>Architecture</strong> - The architecture that the program was compiled for.</li>
+<li><strong>Compiler</strong> - The compiler that was used to generate the file (if known).</li>
+<li><strong>Sections</strong> - The name and offset addresses that divide the file into meaningful paritions.</li>
+</ul>
+</div>
+<div class="section" id="level-2-interpreted-data">
+<h2><strong>Level 2 (Interpreted Data)</strong><a class="headerlink" href="#level-2-interpreted-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Opcodes</strong> - The bytes from the .text section that can be decoded into a  stream of opcodes. The .text is the binary&#8217;s actual code.</li>
+<li><strong>Strings</strong> - A list of strings from the .data section and other sections.</li>
+<li><strong>Imports</strong> - A list of functions the program references from a linked object file.</li>
+<li><strong>Exports</strong> - A list of variables and function addresses made available to outside programs.</li>
+<li><strong>Header Information</strong> - Information about how the program is organized.</li>
+</ul>
+</div>
+<div class="section" id="level-3-transformed-data">
+<h2><strong>Level 3 (Transformed Data)</strong><a class="headerlink" href="#level-3-transformed-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Disassembly</strong> - The output from the transformation from a binary file to an assembly file.</li>
+<li><strong>Mnemonics</strong> - The portion of the assembly instruction that is related to the action being preformed.</li>
+<li><strong>Functions</strong> - The list of addresses that are discovered from analyzing the targets of call instructions.</li>
+<li><strong>Basic Blocks</strong> - The directed graph of basic blocks that can be constructed by analyzing the boundaries and control flow of instructions.</li>
+<li><strong>Data References</strong> - The location of data values derived from interpreting memory store and load operations.</li>
+<li><strong>Jump Targets</strong> - The memory address offsets obtained by analyzing the targets of conditional and unconditional control flow change instructions.</li>
+</ul>
+</div>
+</div>
 
 
           </div>
@@ -76,6 +171,20 @@
   <ul>
 <li><a class="reference internal" href="#">Welcome to Idamous&#8217;s documentation!</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#readme">Readme</a><ul>
+<li><a class="reference internal" href="#idamous">Idamous</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#running">Running</a></li>
+<li><a class="reference internal" href="#extending">Extending</a></li>
+<li><a class="reference internal" href="#levels-of-representation">Levels of Representation</a></li>
+<li><a class="reference internal" href="#level-0-raw-data"><strong>Level 0 (Raw Data)</strong></a></li>
+<li><a class="reference internal" href="#level-1-extracted-data"><strong>Level 1 (Extracted Data)</strong></a></li>
+<li><a class="reference internal" href="#level-2-interpreted-data"><strong>Level 2 (Interpreted Data)</strong></a></li>
+<li><a class="reference internal" href="#level-3-transformed-data"><strong>Level 3 (Transformed Data)</strong></a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Next topic</h4>
@@ -116,7 +225,7 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2016, Logan Rickert, Cole, David.
+        &copy; Copyright 2016, Logan Rickert, Cole Lower, David Sutherin.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

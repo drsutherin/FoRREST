@@ -54,100 +54,193 @@
             
   <div class="section" id="raw">
 <h1>Raw<a class="headerlink" href="#raw" title="Permalink to this headline">¶</a></h1>
-<p>This is something I want to say that is not in the docstring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Platform:</th><td class="field-body">Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Class Authors:</th><td class="field-body">Authors: Logan Rickert, Cole Loewer, David Sutherin</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Standard:</th><td class="field-body">Flake8</td>
+</tr>
+</tbody>
+</table>
+<p>The main purpose of this class is to handle getting meta-data about files.</p>
 <dl class="class">
 <dt id="Idamous.plugins.raw.File.File">
 <em class="property">class </em><tt class="descclassname">Idamous.plugins.raw.File.</tt><tt class="descname">File</tt><big>(</big><em>idamous</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="Idamous.plugins.raw.File.File.get_extension">
 <tt class="descname">get_extension</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_extension" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the extension of the current file.</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the extension of the current file.</dd>
 <dt>Example:</dt>
 <dd>file = /cake/awesome/sweet.py
 returns: &#8220;py&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str. The extenstion.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.raw.File.File.get_inode">
 <tt class="descname">get_inode</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_inode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the inode of the current file.</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the inode of the current file.</dd>
 <dt>Example:</dt>
 <dd>303 idamous.py
 returns: 303</dd>
+<dt>Returns:</dt>
+<dd>int. The inode.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.raw.File.File.get_md5">
 <tt class="descname">get_md5</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_md5" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the MD5 sum for the file.</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the MD5 sum for the file.</dd>
 <dt>Example:</dt>
 <dd>file = /cake/awesome/sweet.py
 returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str. The hash.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.raw.File.File.get_name">
 <tt class="descname">get_name</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the filename of the current file.</p>
-<dl class="docutils">
-<dt>Example: </dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the filename of the current file.</dd>
+<dt>Example:</dt>
 <dd>file = /cake/awesome/sweet.py
 returns: &#8220;sweet.py&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str. The filename.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.raw.File.File.get_path">
 <tt class="descname">get_path</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the path to the file.</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the path to the file.</dd>
 <dt>Example:</dt>
 <dd><p class="first">file = /cake/awesome/sweet.py
 returns: &#8220;/cake/awesome&#8221;</p>
 <p class="last">file = plugins/raw/Raw.py
 returns: &#8220;plugins/raw&#8221;</p>
 </dd>
+<dt>Returns:</dt>
+<dd>str. The path.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_sha1">
+<tt class="descname">get_sha1</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_sha1" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the SHA1 sum for the file.</dd>
+<dt>Example:</dt>
+<dd>file = /cake/awesome/sweet.py
+returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str. The hash.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_sha256">
+<tt class="descname">get_sha256</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_sha256" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the SHA256 sum for the file.</dd>
+<dt>Example:</dt>
+<dd>file = /cake/awesome/sweet.py
+returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str. The hash.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.raw.File.File.get_sha512">
+<tt class="descname">get_sha512</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_sha512" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the SHA512 sum for the file.</dd>
+<dt>Example:</dt>
+<dd>file = /cake/awesome/sweet.py
+returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str. The hash.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.raw.File.File.get_size">
 <tt class="descname">get_size</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the size of the current file in bytes.</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the size of the current file in bytes.</dd>
 <dt>Example:</dt>
 <dd>3343 idamous.py
 returns: 3343</dd>
+<dt>Returns:</dt>
+<dd>int. The size of the file.</dd>
 </dl>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="Idamous.plugins.raw.File.File.hash_file">
 <em class="property">static </em><tt class="descname">hash_file</tt><big>(</big><em>filename</em>, <em>hash_algo</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.hash_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a hash for &#64;filename based on the the &#64;hash_algo.</p>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns a hash for &#64;filename based on the the &#64;hash_algo.</dd>
+<dt>Args:</dt>
+<dd>filename (str): The name of the file to hash.
+hash_algo (hashlib): The hashing algorithm.
+(IE: hashlib.sha512())</dd>
+<dt>Returns:</dt>
+<dd>str. The hash.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.raw.File.File.read_chunck">
 <tt class="descname">read_chunck</tt><big>(</big><em>chunksize=4096</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.read_chunck" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a chunck of the file. By default, the size is 4096.
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns a chunck of the file. By default, the size is 4096.
 The function will start at the beginning and hold its position
 each read.
-Once the file has been completely read in, calling this function
-will return empty string (&#8216;&#8217;) and reset to the beginning of the
-file.</p>
+Once the file has been completely read in, calling this
+function will return empty string (&#8216;&#8217;) and reset to the
+beginning of the file.</dd>
+<dt>Args:</dt>
+<dd>chunksize (int): The lenght of string to read in.</dd>
+<dt>Returns:</dt>
+<dd>str. The chunck from the requested file in rb.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.raw.File.File.reset_read">
 <tt class="descname">reset_read</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.reset_read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Force reset the read_chunck method to start at the beginning.</p>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Force reset the read_chunck method to start at the beginning.</dd>
+<dt>Returns:</dt>
+<dd>None.</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -206,7 +299,7 @@ file.</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2016, Logan Rickert, Cole, David.
+        &copy; Copyright 2016, Logan Rickert, Cole Lower, David Sutherin.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

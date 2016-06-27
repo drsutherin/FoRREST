@@ -54,84 +54,133 @@
             
   <div class="section" id="extract">
 <h1>Extract<a class="headerlink" href="#extract" title="Permalink to this headline">¶</a></h1>
-<p>This is something I want to say that is not in the docstring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Platform:</th><td class="field-body">Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Class Authors:</th><td class="field-body">Authors: Logan Rickert, Cole Loewer, David Sutherin</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Standard:</th><td class="field-body">Flake8</td>
+</tr>
+</tbody>
+</table>
+<p>The main purpose of this class is to extract some basic information from the
+raw data stored within the file.</p>
+<p>Requirements:</p>
+<ul class="simple">
+<li>python-magic</li>
+</ul>
 <dl class="class">
 <dt id="Idamous.plugins.extract.Extract.Extract">
 <em class="property">class </em><tt class="descclassname">Idamous.plugins.extract.Extract.</tt><tt class="descname">Extract</tt><big>(</big><em>idamous</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="Idamous.plugins.extract.Extract.Extract.get_architecture">
 <tt class="descname">get_architecture</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_architecture" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the architecture the file was compiled for.</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the architecture the file was compiled for.</dd>
 <dt>Example:</dt>
 <dd>file = random.out
 returns &#8220;x86-64&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str - architecture</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.extract.Extract.Extract.get_compiler">
 <tt class="descname">get_compiler</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_compiler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the name of the compiler used to compile the file if present.</p>
-<dl class="docutils">
-<dt>( For Cole/David</dt>
-<dd><p class="first">Command: objdump -s &#8211;section .comment filename
-Output:</p>
-<blockquote>
-<div>Contents of section .comment:
-0000 4743433a 20285562 756e7475 20342e38  GCC: (Ubuntu 4.8
-0010 2e342d32 7562756e 7475317e 31342e30  .4-2ubuntu1~14.0
-0020 342e3329 20342e38 2e3400             4.3) 4.8.4.</div></blockquote>
-<dl class="last docutils">
-<dt>Comment:</dt>
-<dd>You may want to look into seeing if objdump will just display
-ASCII output instead of looking into parsing out the extra
-hex.</dd>
-</dl>
-</dd>
-</dl>
-<p>)</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the name of the compiler used to compile the file if
+present.</dd>
 <dt>Example:</dt>
 <dd>file = random.out
 returns &#8220;GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4.&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str - Compiler used</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.extract.Extract.Extract.get_elf_header">
+<tt class="descname">get_elf_header</tt><big>(</big><em>item=None</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_elf_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets the data from the elf header and returns it.</dd>
+<dt>Args:</dt>
+<dd><cite>item</cite> - Only get entry in the elf header.</dd>
+<dt>Example:</dt>
+<dd><dl class="first docutils">
+<dt>{</dt>
+<dd>&#8216;Machine&#8217;: &#8220;Index 80368&#8221;,
+&#8216;Class&#8217;: &#8220;ELF32&#8221;</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+<dt>Returns:</dt>
+<dd>dict([[str, str], ...]) - A dictionary of the elf header.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.extract.Extract.Extract.get_filetype">
-<tt class="descname">get_filetype</tt><big>(</big><em>meme=True</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_filetype" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the type of file for the current file based on a sequence
-of bits at the start of the file. This is considered the mime type.</p>
-<dl class="docutils">
+<tt class="descname">get_filetype</tt><big>(</big><em>mime=True</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_filetype" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the type of file for the current file based on a
+sequence of bits at the start of the file. This is considered
+the mime type.</dd>
+<dt>Args:</dt>
+<dd><cite>mime</cite> (bool): Return the mime type or the full mime.</dd>
 <dt>Example:</dt>
 <dd>#!/bin/bash
 Returns: text/x-bash;</dd>
+<dt>Returns:</dt>
+<dd>str - The mime type</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.extract.Extract.Extract.get_section_ascii">
+<tt class="descname">get_section_ascii</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_section_ascii" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the given <cite>section</cite> in ascii.</dd>
+<dt>Args:</dt>
+<dd><cite>section</cite> (str) - The section of the file.</dd>
+<dt>Example:</dt>
+<dd>section = &#8221;.comment&#8221;
+returns &#8220;GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4.&#8221;</dd>
+<dt>Returns:</dt>
+<dd>[str, str, ...] - The <cite>section</cite> in ascii.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.plugins.extract.Extract.Extract.get_section_hex">
+<tt class="descname">get_section_hex</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_section_hex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the given <cite>section</cite> in hex.</dd>
+<dt>Args:</dt>
+<dd><cite>section</cite> (str) - The section of the file.</dd>
+<dt>Example:</dt>
+<dd>section = &#8221;.comment&#8221;
+returns [[23, 89, 43], [34, 59, 83], [45]]</dd>
+<dt>Returns:</dt>
+<dd>[[str], [str], ...] - The <cite>section</cite> in hex.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.extract.Extract.Extract.get_sections">
 <tt class="descname">get_sections</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_sections" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of section headers for a file.</p>
-<dl class="docutils">
-<dt>( For Cole/David</dt>
-<dd><p class="first">Command: objdump -h filename
-Output:</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>0 .interp       0000001c  0000000000400238  0000000000400238  00000238  2**0</dt>
-<dd>CONTENTS, ALLOC, LOAD, READONLY, DATA</dd>
-<dt>1 .note.ABI-tag 00000020  0000000000400254  0000000000400254  00000254  2**2</dt>
-<dd>CONTENTS, ALLOC, LOAD, READONLY, DATA</dd>
-<dt>2 .note.gnu.build-id 00000024  0000000000400274  0000000000400274  00000274  2**2</dt>
-<dd>CONTENTS, ALLOC, LOAD, READONLY, DATA</dd>
-</dl>
-</div></blockquote>
-</dd>
-</dl>
-<p>)</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns a list of section headers for a file.</dd>
 <dt>Example:</dt>
 <dd><p class="first">file = random.out
 returns [</p>
@@ -143,17 +192,22 @@ returns [</p>
 etc</div></blockquote>
 <p class="last">]</p>
 </dd>
+<dt>Returns:</dt>
+<dd>[str, str, ...] - A list of the sections.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.extract.Extract.Extract.get_version">
 <tt class="descname">get_version</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the version number of the binary if present.</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns the version number of the binary if present.</dd>
 <dt>Example:</dt>
 <dd>file = random.out
 returns &#8220;5.4.0&#8221;</dd>
+<dt>Returns:</dt>
+<dd>str - version number</dd>
 </dl>
 </dd></dl>
 
@@ -213,7 +267,7 @@ returns &#8220;5.4.0&#8221;</dd>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2016, Logan Rickert, Cole, David.
+        &copy; Copyright 2016, Logan Rickert, Cole Lower, David Sutherin.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

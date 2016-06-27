@@ -1,7 +1,12 @@
 Interpret
 **************************
 
-This is something I want to say that is not in the docstring.
+:Platform: Unix
+:Class Authors: Authors: Logan Rickert, Cole Loewer, David Sutherin
+:Standard: Flake8
+
+The main purpose of this class is to interpret the data that has
+been extracted.
 
 .. autoclass:: Idamous.plugins.interpret.Interpret.Interpret
    :members:

@@ -54,52 +54,47 @@
             
   <div class="section" id="interpret">
 <h1>Interpret<a class="headerlink" href="#interpret" title="Permalink to this headline">¶</a></h1>
-<p>This is something I want to say that is not in the docstring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Platform:</th><td class="field-body">Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Class Authors:</th><td class="field-body">Authors: Logan Rickert, Cole Loewer, David Sutherin</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Standard:</th><td class="field-body">Flake8</td>
+</tr>
+</tbody>
+</table>
+<p>The main purpose of this class is to interpret the data that has
+been extracted.</p>
 <dl class="class">
 <dt id="Idamous.plugins.interpret.Interpret.Interpret">
 <em class="property">class </em><tt class="descclassname">Idamous.plugins.interpret.Interpret.</tt><tt class="descname">Interpret</tt><big>(</big><em>idamous</em><big>)</big><a class="headerlink" href="#Idamous.plugins.interpret.Interpret.Interpret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="Idamous.plugins.interpret.Interpret.Interpret.get_exports">
 <tt class="descname">get_exports</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.interpret.Interpret.Interpret.get_exports" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of functions and variables that the binary
-makes available to outside programs.</p>
-<dl class="docutils">
-<dt>( For Cole/David</dt>
-<dd><dl class="first last docutils">
-<dt>Comments:</dt>
-<dd><p class="first">I&#8217;m not too sure on this one. I don&#8217;t have any
-.so files laying around. Maybe email Doctor Bryant?</p>
-<p>At any rate, what you&#8217;re looking for on Google is:
-&#8220;nm get exported functions&#8221;.</p>
-<p class="last">I think it might be that things starting with T
-are functions that are exported.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>)</p>
-<dl class="docutils">
-<dt>Returns [</dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns a list of functions and variables that the binary
+makes available to outside programs.</dd>
+<dt>Example:</dt>
+<dd><dl class="first docutils">
+<dt>[</dt>
 <dd>&#8216;printf&#8217;</dd>
 </dl>
-<p>]</p>
+<p class="last">]</p>
+</dd>
+<dt>Returns:</dt>
+<dd>[str, ...] - A list of strings that are the names of exported
+functions.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.interpret.Interpret.Interpret.get_header_information">
 <tt class="descname">get_header_information</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.interpret.Interpret.Interpret.get_header_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the header information for a file.</p>
-<dl class="docutils">
-<dt>( For Cole/David</dt>
-<dd><dl class="first last docutils">
-<dt>Comments:</dt>
-<dd>I&#8217;m not too sure what they want from this. The description
-just says &#8220;structural information about how the program is
-organized.&#8221; I would email Doctor Bryant.</dd>
-</dl>
-</dd>
-</dl>
-<p>)</p>
 <p>Returns maybe a list? Maybe Dictionary?</p>
 <p>PEView - Windows only</p>
 </dd></dl>
@@ -107,26 +102,10 @@ organized.&#8221; I would email Doctor Bryant.</dd>
 <dl class="method">
 <dt id="Idamous.plugins.interpret.Interpret.Interpret.get_imports">
 <tt class="descname">get_imports</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.interpret.Interpret.Interpret.get_imports" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of all the functions the binary references 
-from a linked file object.</p>
-<dl class="docutils">
-<dt>( For Cole/David</dt>
-<dd><p class="first">Command: nm -C &#8211;dynamic filename
-Output:</p>
-<blockquote>
-<div>w __gmon_start__
-U __isoc99_scanf
-U __libc_start_main
-U printf
-U puts</div></blockquote>
-<dl class="last docutils">
-<dt>Comments:</dt>
-<dd>We want the ones with a U.</dd>
-</dl>
-</dd>
-</dl>
-<p>)</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns a list of all the functions the binary references
+from a linked file object.</dd>
 <dt>Example:</dt>
 <dd><p class="first">file = random.out
 returns [</p>
@@ -137,30 +116,19 @@ returns [</p>
 etc</div></blockquote>
 <p class="last">]</p>
 </dd>
+<dt>Returns:</dt>
+<dd>[str, ...] - A list of strings that are the names of imported
+functions.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.interpret.Interpret.Interpret.get_opcodes">
 <tt class="descname">get_opcodes</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.interpret.Interpret.Interpret.get_opcodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of the assembly code in binary.</p>
-<dl class="docutils">
-<dt>( For Cole/David</dt>
-<dd><p class="first">Command: objdump -d filename
-Output:</p>
-<blockquote>
-<div>00000000004005ed &lt;main&gt;:
-4005ed:       55                      push   %rbp
-4005ee:       48 89 e5                mov    %rsp,%rbp
-4005f1:       48 83 ec 20             sub    $0x20,%rsp</div></blockquote>
-<dl class="last docutils">
-<dt>Commments:</dt>
-<dd>This function should return the text in the middle.</dd>
-</dl>
-</dd>
-</dl>
-<p>)</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns a list of the assembly code in binary. Each instruction
+is a list of bytes.</dd>
 <dt>Example:</dt>
 <dd><p class="first">file = random.out
 returns [</p>
@@ -171,32 +139,18 @@ returns [</p>
 etc</div></blockquote>
 <p class="last">]</p>
 </dd>
+<dt>Returns:</dt>
+<dd>[[str], ...] - A list of binary instructions.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="Idamous.plugins.interpret.Interpret.Interpret.get_strings">
 <tt class="descname">get_strings</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.interpret.Interpret.Interpret.get_strings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of strings found in the binary. The string must
-be four consecutive printable ASCII characters.</p>
-<dl class="docutils">
-<dt>( For Cole/David</dt>
-<dd><p class="first">Command: strings filename
-Output:</p>
-<blockquote>
-<div>/lib64/ld-linux-x86-64.so.2
-libc.so.6
-__isoc99_scanf
-puts
-printf</div></blockquote>
-<dl class="last docutils">
-<dt>Comments:</dt>
-<dd>Just return terminal_output.split()</dd>
-</dl>
-</dd>
-</dl>
-<p>)</p>
-<dl class="docutils">
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns a list of strings found in the binary. The string must
+be four consecutive printable ASCII characters.</dd>
 <dt>Example:</dt>
 <dd><p class="first">file = random.out
 returns [</p>
@@ -207,6 +161,8 @@ returns [</p>
 etc</div></blockquote>
 <p class="last">]</p>
 </dd>
+<dt>Returns:</dt>
+<dd>[str, ...] - A list of strings found in the binary file.</dd>
 </dl>
 </dd></dl>
 
@@ -266,7 +222,7 @@ etc</div></blockquote>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2016, Logan Rickert, Cole, David.
+        &copy; Copyright 2016, Logan Rickert, Cole Lower, David Sutherin.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

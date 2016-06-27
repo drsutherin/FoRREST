@@ -51,6 +51,18 @@
             
   <div class="section" id="idamous">
 <h1>Idamous<a class="headerlink" href="#idamous" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Platform:</th><td class="field-body">Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Class Authors:</th><td class="field-body">Authors: Logan Rickert, Cole Loewer, David Sutherin</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Standard:</th><td class="field-body">Flake8</td>
+</tr>
+</tbody>
+</table>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Plugins.html">Plugins</a><ul>
@@ -62,6 +74,111 @@
 </li>
 </ul>
 </div>
+<dl class="class">
+<dt id="Idamous.Idamous">
+<em class="property">class </em><tt class="descclassname">Idamous.</tt><tt class="descname">Idamous</tt><a class="headerlink" href="#Idamous.Idamous" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="Idamous.Idamous.get_extracted_data">
+<tt class="descname">get_extracted_data</tt><big>(</big><em>params=None</em><big>)</big><a class="headerlink" href="#Idamous.Idamous.get_extracted_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets a dictionary of all of the extracted data.</dd>
+<dt>Returns:</dt>
+<dd><dl class="first docutils">
+<dt>dict(str <span class="classifier-delimiter">:</span> <span class="classifier">(list | str)) - {</span></dt>
+<dd>&#8216;type&#8217;: str,
+&#8216;version&#8217;: str,
+&#8216;architecture&#8217;: int,
+&#8216;compiler&#8217;: str,
+&#8216;sections&#8217;: list</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.Idamous.get_file">
+<tt class="descname">get_file</tt><big>(</big><em>params=None</em><big>)</big><a class="headerlink" href="#Idamous.Idamous.get_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets the filename and path of the current file. Returns
+None if no file.</dd>
+<dt>Returns:</dt>
+<dd>str? - The name and filepath of the file.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.Idamous.get_help">
+<tt class="descname">get_help</tt><big>(</big><em>params=None</em><big>)</big><a class="headerlink" href="#Idamous.Idamous.get_help" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Prints to std a message of help that is read in from help.txt.</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.Idamous.get_interpreted_data">
+<tt class="descname">get_interpreted_data</tt><big>(</big><em>params=None</em><big>)</big><a class="headerlink" href="#Idamous.Idamous.get_interpreted_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets a dictionary of all of the raw metadata.</dd>
+<dt>Returns:</dt>
+<dd><dl class="first docutils">
+<dt>dict(str <span class="classifier-delimiter">:</span> <span class="classifier">int) - {</span></dt>
+<dd>&#8216;opcodes&#8217;: list,
+&#8216;strings&#8217;: list,
+&#8216;imports&#8217;: list,
+&#8216;exports&#8217;: list,
+&#8216;header_information&#8217;: list,</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.Idamous.get_raw_data">
+<tt class="descname">get_raw_data</tt><big>(</big><em>params=None</em><big>)</big><a class="headerlink" href="#Idamous.Idamous.get_raw_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Gets a dictionary of all of the raw metadata.</dd>
+<dt>Returns:</dt>
+<dd><dl class="first docutils">
+<dt>dict(str <span class="classifier-delimiter">:</span> <span class="classifier">(int | str)) - {</span></dt>
+<dd>&#8216;name&#8217;: str,
+&#8216;extension&#8217;: str,
+&#8216;size&#8217;: int,
+&#8216;md5&#8217;: str,
+&#8216;sha1&#8217;: str,
+&#8216;sha256&#8217;: str</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Idamous.Idamous.set_file">
+<tt class="descname">set_file</tt><big>(</big><em>params</em><big>)</big><a class="headerlink" href="#Idamous.Idamous.set_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Sets the file to be used.</dd>
+<dt>Args:</dt>
+<dd>str - The name of the file.
+[str] - The name of the file (first element of list).</dd>
+<dt>Example:</dt>
+<dd>binaries/mybin.out</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -114,7 +231,7 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2016, Logan Rickert, Cole, David.
+        &copy; Copyright 2016, Logan Rickert, Cole Lower, David Sutherin.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
