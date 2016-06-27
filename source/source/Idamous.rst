@@ -1,4 +1,4 @@
-Documentation
+Idamous
 **************************
 
 .. toctree::
