@@ -1,5 +1,4 @@
 from peewee import *
-from playhouse.fields import ManyToManyField
 import datetime
 
 db = SqliteDatabase('Idamous.db')
