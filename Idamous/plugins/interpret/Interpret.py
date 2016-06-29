@@ -1,5 +1,4 @@
 
-
 class Interpret:
 
     def __init__(self, idamous):
@@ -158,9 +157,8 @@ class Interpret:
             PEView - Windows only
 
         """
-	#All the header Information
-	out, err = self.idamous_shell('objbump', ['-x', self._get_file()])
-
+	#All the folowing header Information, also the symbol table
+	out, err = self.idamous_shell('objdump', ['-x', self._get_file()])
 
 	#archive-header
 	out, err = self.idamous_shell('objdump', ['-a', self._get_file()])
@@ -172,6 +170,5 @@ class Interpret:
 	out, err = self.idamous_shell('objdump', ['-p', self._get_file()])
 	#relocation entries of the files
 	out, err = self.idamous_shell('objdump', ['-r', self._get_file()])
-	
 
         return ''
