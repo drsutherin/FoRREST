@@ -1,16 +1,30 @@
 
 import os
 import hashlib
+from Model import Raw_Model
 
-class File:
-    
+class Raw:
+
     def __init__(self, idamous):
         self.idamous = idamous
         self.file = None
         
     def _get_file(self):
         return self.idamous.get_file()
-        
+
+    def add_entry(self):
+        if self._get_file() != None:
+            Raw_Model.create(
+                name=self.get_name(),
+                extension=self.get_extension(),
+                size=self.get_size(),
+                inode=self.get_inode(),
+                path=self.get_path(),
+                md5sum=self.get_md5(),
+                sha1sum=self.get_sha1(),
+                sha256sum=self.get_sha256()
+            )
+
     def get_name(self):
         """
             Returns the filename of the current file.
@@ -80,19 +94,21 @@ class File:
                 returns: "943172131622f261d9af95e1634159d9"
         """
         hash_algo = hashlib.md5()
-        return File.hash_file(self._get_file(), hash_algo)
-        
+
+        return Raw.hash_file(self._get_file(), hash_algo)
+
     def get_sha1(self):
         hash_algo = hashlib.sha1()
-        return File.hash_file(self._get_file(), hash_algo)
-        
+        return Raw.hash_file(self._get_file(), hash_algo)
+
     def get_sha256(self):
         hash_algo = hashlib.sha256()
-        return File.hash_file(self._get_file(), hash_algo)
-    
+
+        return Raw.hash_file(self._get_file(), hash_algo)
+
     def get_sha512(self):
         hash_algo = hashlib.sha512()
-        return File.hash_file(self._get_file(), hash_algo)
+        return Raw.hash_file(self._get_file(), hash_algo)
 
     def read_chunck(self, chunksize=4096):
         """

@@ -3,6 +3,8 @@ from Idamous import Idamous
 import subprocess
 import os
 import sys
+#adds a history function to the cli interface
+import readline
 
 def start_shell():
     print ""

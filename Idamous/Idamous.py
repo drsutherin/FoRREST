@@ -6,15 +6,15 @@ from plugins import *
 import sys
 
 class Idamous:
-    
-    def __init__(self):
+
+    def __init__(self, filename=None):
         """
             Inits the class
         """
         # Change to not being hardcoded later
         self.operating_system = 'linux'
-        self.current_file = None
-        self.raw = raw.File.File(self)
+        self.current_file = filename
+        self.raw = raw.Raw.Raw(self)
         self.extract = extract.Extract.Extract(self)
         self.interpret = interpret.Interpret.Interpret(self)
     

@@ -146,7 +146,17 @@ class Interpret:
                 'printf'
             ]
         """
-        return ''
+	out, err = self.idamous._shell('nm', ['-g',  self._get_file()])
+	
+	term_out = []
+
+	for x in out:
+	   if len(x.split()) == 3:
+	      term_out.append(x.split()[2])
+	   else:
+	      term_out.append(x.split()[1])
+
+	return term_out	
 
     def get_header_information(self):
         """
@@ -164,5 +174,21 @@ class Interpret:
             PEView - Windows only
             
         """
+	#All the header Information
+	out, err = self.idamous_shell('objbump', ['-x', self._get_file()])
+
+
+	#archive-header
+	out, err = self.idamous_shell('objdump', ['-a', self._get_file()])
+	#file headers
+	out, err = self.idamous_shell('objdump', ['-f', self._get_file()])
+	#section headers
+	out, err = self.idamous_shell('objdump', ['-h', self._get_file()])
+	#private headers
+	out, err = self.idamous_shell('objdump', ['-p', self._get_file()])
+	#relocation entries of the files
+	out, err = self.idamous_shell('objdump', ['-r', self._get_file()])
+	
+
         return ''
 
