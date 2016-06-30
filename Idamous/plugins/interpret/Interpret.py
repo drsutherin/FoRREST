@@ -157,18 +157,27 @@ class Interpret:
             PEView - Windows only
 
         """
-	#All the folowing header Information, also the symbol table
-	out, err = self.idamous_shell('objdump', ['-x', self._get_file()])
-
-	#archive-header
-	out, err = self.idamous_shell('objdump', ['-a', self._get_file()])
-	#file headers
-	out, err = self.idamous_shell('objdump', ['-f', self._get_file()])
-	#section headers
-	out, err = self.idamous_shell('objdump', ['-h', self._get_file()])
 	#private headers
-	out, err = self.idamous_shell('objdump', ['-p', self._get_file()])
-	#relocation entries of the files
-	out, err = self.idamous_shell('objdump', ['-r', self._get_file()])
+	program_head = []
 
-        return ''
+	stdout = self.idamous._shell_std('objdump', ['-p', self._get_file()])
+	
+	private_head_out, err = self.idamous._shell('grep', 'off', stdout)
+	
+	for x in private_head_out:
+	    program_head.append(x.split()[0])
+	
+	#needs another arugment in _shell function
+	'''
+	dynamic_head = []
+	
+	#search for the Dynamic Secion
+	stdout1 = self.idamous._shell('sed','-n', '"/Dynamic Section:/,/^$/p"' , stdout)
+	
+	#remove 'Dynamic Section' from the output
+	dynamic_head_out, err = self.idamous._shell('grep', '-v', '"Dynamic Section:"', stdout1)
+	
+	for x in dynamic_head_out:
+	    dynamic_head.append(x.split()[0])
+	'''
+        return program_head  #dynamic_head
