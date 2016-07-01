@@ -8,7 +8,9 @@ import readline
 
 def start_shell():
     print ""
-    print "IDAMOUS:  Integrated Framework for Reverse Engineering Software"
+    print "FoRREST: A Framework of Robust Reverse Engineering Software Tools"
+    print "---------------------------------------------------------------"
+    print "Run, FoRREST, run!"
     print "---------------------------------------------------------------"
     print "Begin by loading your binay with the 'load [yourfile]' command."
     print "Type 'help' to see all available commands!"
@@ -23,7 +25,7 @@ def start_shell():
     ]
     
     while should_continue:
-        cmd = raw_input("Idamous> ")
+        cmd = raw_input("FoRREST> ")
     
         if cmd.lower() in quit:
             should_continue = False
