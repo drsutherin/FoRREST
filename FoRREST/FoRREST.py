@@ -17,7 +17,8 @@ class FoRREST:
         self.raw = raw.Raw.Raw(self)
         self.extract = extract.Extract.Extract(self)
         self.interpret = interpret.Interpret.Interpret(self)
-    
+        self.transform = transform.Transform.Transform(self)
+   
     def set_file(self, params):
         if type(params) == str:
             filename = params

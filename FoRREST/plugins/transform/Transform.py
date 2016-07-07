@@ -1,4 +1,6 @@
 #requires radare2 to be installed
+#requires angr, angr-utils, pydot, networkx, graphviz
+ 
 class Transform:
     
     def __init__(self, idamous):
@@ -7,7 +9,7 @@ class Transform:
     def _get_file(self):
         return self.idamous.get_file()
 
-    def check_imports(self):
+    def check_r2(self):
         good = True
         try:
             import r2pipe
@@ -18,20 +20,20 @@ class Transform:
         return good
 
     def get_disassembly(self):
-        if self.check_import() == True:
+        if self.check_r2() == True:
             r2 = r2pipe.open(self._get_file)
             out = r2.cmd('pi $s ~!invalid')
 	    out = out.split('\n')
  	return out
 
     def get_mnemonics(self):
-        if self.check_imports() == True:
+        if self.check_r2() == True:
             r2 = r2pipe.open(self._get_file)
             out = r2.cmd('pi $s ~!invalid')
         return [x.split()[0] for x in out]
 
     def get_functions(self):
-        if self.check_imports() == True:
+        if self.check_r2() == True:
             r2 = r2pipe.open(self._get_file)
             #analyze the functions
             r2.cmd('af')
@@ -49,16 +51,25 @@ class Transform:
         return term_out
 
     def get_basic_blocks(self):
-        if self.check_imports() == True:
-            r2 = r2pipe.open(self._get_file)
-            r2.cmd('aa')
-	    out =r2.cmd('afg')
-        return out
+        try:
+	    import angr
+            #from angrutils import *
+            from .visualize import plot_cfg
+            proj = angr.Project(self._get_file(), load_options={'auto_load_libs':False})
+            main = proj.loader.main_bin.get_symbol("main")
+            start_state = proj.factory.blank_state(addr=main.addr)
+            cfg = proj.analyses.CFGAccurate(fail_fast=True, starts=[main.addr], initial_state=start_state)
+            plot_cfg(cfg, "%s_cfg" % self._get_file(), asminst=True, remove_imports=True, remove_path_terminator=True)
+            print "CFG saved as %s_cfg.png" % self._get_file()
+        except ImportError:
+            print "[-] Could not load angr/angrutils"
+            print "[-] Do you have it installed?"
+        return
 
 
     def get_data_references(self):
         '''
-        if self.check_imports() == True:
+        if self.check_r2() == True:
             r2 = r2pipe.open(self._get_file)
             r2.cmd('/R ')
         return out
@@ -67,7 +78,7 @@ class Transform:
     
     def get_jump_targets(self):
         #needs parsing
-        if self.check_imports() == True:
+        if self.check_r2() == True:
             term_out = []
 
 	    r2 = r2pipe.open(self._get_file)
