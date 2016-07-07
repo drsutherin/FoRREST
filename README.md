@@ -106,4 +106,3 @@ by analyzing the boundaries and control flow of instructions.
 memory store and load operations.
 * **Jump Targets** - The memory address offsets obtained by analyzing the
 targets of conditional and unconditional control flow change instructions.
-
