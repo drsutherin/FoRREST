@@ -1,31 +1,46 @@
 # FoRREST
-Reverse Engineering Framework
+A Framework of Robust Reverse Engineering Software Tools
 
 Version 0.8
 
 ## Overview
-The purpose of this project is to create a vulnerability anaylsis framework that
+The purpose of this project is to create a binary executable analysis framework that
 combines existing tools into one package. It also makes it easier to create or
 install tools into the framework for use.
 
 ## Background
+This project was started as part of a National Science Foundation Foundation funded research experience for undergraduates (REU) program at Wright State University in Dayton, Ohio.
+
 This framework is currently designed for Linux
 
 ## Requirements
 * Python 2.7
+  * [peewee](https://github.com/coleifer/peewee)
+* [Radare2](https://github.com/radare/radare2)
+* angr
+
+## Installation
+* Clone the project from [https://github.com/drsutherin/FoRREST](https://github.com/drsutherin/FoRREST)
+* Install peewee: ```pip install peewee```
+* Install python-magic ```pip install python-magic```
+* Install [Radare2]((https://github.com/radare/radare2)
+  * ```git clone https://github.com/radare/radare2```
+  * ```radare2/sys/install.sh```
+* Install angr
+  * Follow [their instructions](http://docs.angr.io/INSTALL.html) to make sure all angr's dependencies are installed
 
 ## Running
-To run the program:
+To run the program with the command line interface, from the root directory:
 
 ```
-python FoRREST.py
+python main.py
 ```
 
 ## Extending
-To extend the program, just import idamous.
+To extend the program, just import FoRREST.
 
 ```
-import FoRREST
+from FoRREST import FoRREST
 ```
 
 # Levels of Representation
