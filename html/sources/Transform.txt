@@ -12,5 +12,5 @@ Requirements:
 * radare2
 * r2pipe
 
-.. autoclass:: Idamous.plugins.transform.Transform.Transform
+.. autoclass:: FoRREST.plugins.transform.Transform.Transform
    :members:

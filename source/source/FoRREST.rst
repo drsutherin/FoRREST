@@ -1,4 +1,4 @@
-Idamous
+FoRREST
 **************************
 
 :Platform: Unix
@@ -10,5 +10,5 @@ Idamous
 
    Plugins
 
-.. autoclass:: Idamous.Idamous
+.. autoclass:: FoRREST.FoRREST
     :members:

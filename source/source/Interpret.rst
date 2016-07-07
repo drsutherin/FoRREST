@@ -8,5 +8,5 @@ Interpret
 The main purpose of this class is to interpret the data that has
 been extracted.
 
-.. autoclass:: Idamous.plugins.interpret.Interpret.Interpret
+.. autoclass:: FoRREST.plugins.interpret.Interpret.Interpret
    :members:

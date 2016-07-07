@@ -1,9 +1,9 @@
-.. Idamous documentation master file, created by
+.. FoRREST documentation master file, created by
    sphinx-quickstart on Sun Jun 26 23:54:33 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Idamous's documentation!
+Welcome to FoRREST's documentation!
 ===================================
 
 Contents:
@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 3
 
-   Idamous
+   FoRREST
 
 
 Indices and tables
@@ -24,7 +24,7 @@ Indices and tables
 Readme
 ===============
 
-Idamous
+FoRREST
 ###############
 
 Reverse Engineering Framework
@@ -53,16 +53,16 @@ Running
 To run the program:
 
 ```
-python Idamous.py
+python FoRREST.py
 ```
 
 Extending
 ###############
 
-To extend the program, just import idamous.
+To extend the program, just import forrest.
 
 ```
-import Idamous
+import FoRREST
 ```
 
 Levels of Representation

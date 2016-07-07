@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Raw &mdash; Idamous 1.0 documentation</title>
+    <title>Raw &mdash; FoRREST 1.0 documentation</title>
     
     <link rel="stylesheet" href="static/default.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="Idamous 1.0 documentation" href="index.html" />
+    <link rel="top" title="FoRREST 1.0 documentation" href="index.html" />
     <link rel="up" title="Plugins" href="Plugins.html" />
     <link rel="next" title="Extract" href="Extract.html" />
     <link rel="prev" title="Plugins" href="Plugins.html" /> 
@@ -41,8 +41,8 @@
         <li class="right" >
           <a href="Plugins.html" title="Plugins"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Idamous 1.0 documentation</a> &raquo;</li>
-          <li><a href="Idamous.html" >Idamous</a> &raquo;</li>
+        <li><a href="index.html">FoRREST 1.0 documentation</a> &raquo;</li>
+          <li><a href="FoRREST.html" >FoRREST</a> &raquo;</li>
           <li><a href="Plugins.html" accesskey="U">Plugins</a> &raquo;</li> 
       </ul>
     </div>  
@@ -68,11 +68,11 @@
 </table>
 <p>The main purpose of this class is to handle getting meta-data about files.</p>
 <dl class="class">
-<dt id="Idamous.plugins.raw.File.File">
-<em class="property">class </em><tt class="descclassname">Idamous.plugins.raw.File.</tt><tt class="descname">File</tt><big>(</big><em>idamous</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File">
+<em class="property">class </em><tt class="descclassname">FoRREST.plugins.raw.File.</tt><tt class="descname">File</tt><big>(</big><em>forrest</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_extension">
-<tt class="descname">get_extension</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_extension" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_extension">
+<tt class="descname">get_extension</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_extension" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the extension of the current file.</dd>
@@ -85,13 +85,13 @@ returns: &#8220;py&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_inode">
-<tt class="descname">get_inode</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_inode" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_inode">
+<tt class="descname">get_inode</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_inode" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the inode of the current file.</dd>
 <dt>Example:</dt>
-<dd>303 idamous.py
+<dd>303 forrest.py
 returns: 303</dd>
 <dt>Returns:</dt>
 <dd>int. The inode.</dd>
@@ -99,8 +99,8 @@ returns: 303</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_md5">
-<tt class="descname">get_md5</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_md5" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_md5">
+<tt class="descname">get_md5</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_md5" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the MD5 sum for the file.</dd>
@@ -113,8 +113,8 @@ returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_name">
-<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_name" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_name" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the filename of the current file.</dd>
@@ -127,8 +127,8 @@ returns: &#8220;sweet.py&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_path">
-<tt class="descname">get_path</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_path" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_path">
+<tt class="descname">get_path</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_path" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the path to the file.</dd>
@@ -144,8 +144,8 @@ returns: &#8220;plugins/raw&#8221;</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_sha1">
-<tt class="descname">get_sha1</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_sha1" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_sha1">
+<tt class="descname">get_sha1</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_sha1" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the SHA1 sum for the file.</dd>
@@ -158,8 +158,8 @@ returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_sha256">
-<tt class="descname">get_sha256</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_sha256" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_sha256">
+<tt class="descname">get_sha256</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_sha256" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the SHA256 sum for the file.</dd>
@@ -172,8 +172,8 @@ returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_sha512">
-<tt class="descname">get_sha512</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_sha512" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_sha512">
+<tt class="descname">get_sha512</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_sha512" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the SHA512 sum for the file.</dd>
@@ -186,13 +186,13 @@ returns: &#8220;943172131622f261d9af95e1634159d9&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.get_size">
-<tt class="descname">get_size</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.get_size" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.get_size">
+<tt class="descname">get_size</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.get_size" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the size of the current file in bytes.</dd>
 <dt>Example:</dt>
-<dd>3343 idamous.py
+<dd>3343 forrest.py
 returns: 3343</dd>
 <dt>Returns:</dt>
 <dd>int. The size of the file.</dd>
@@ -200,8 +200,8 @@ returns: 3343</dd>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="Idamous.plugins.raw.File.File.hash_file">
-<em class="property">static </em><tt class="descname">hash_file</tt><big>(</big><em>filename</em>, <em>hash_algo</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.hash_file" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.hash_file">
+<em class="property">static </em><tt class="descname">hash_file</tt><big>(</big><em>filename</em>, <em>hash_algo</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.hash_file" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns a hash for &#64;filename based on the the &#64;hash_algo.</dd>
@@ -215,8 +215,8 @@ hash_algo (hashlib): The hashing algorithm.
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.read_chunck">
-<tt class="descname">read_chunck</tt><big>(</big><em>chunksize=4096</em><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.read_chunck" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.read_chunck">
+<tt class="descname">read_chunck</tt><big>(</big><em>chunksize=4096</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.read_chunck" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns a chunck of the file. By default, the size is 4096.
@@ -233,8 +233,8 @@ beginning of the file.</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.raw.File.File.reset_read">
-<tt class="descname">reset_read</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.raw.File.File.reset_read" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.raw.File.File.reset_read">
+<tt class="descname">reset_read</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.raw.File.File.reset_read" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Force reset the read_chunck method to start at the beginning.</dd>
@@ -293,8 +293,8 @@ beginning of the file.</dd>
         <li class="right" >
           <a href="Plugins.html" title="Plugins"
              >previous</a> |</li>
-        <li><a href="index.html">Idamous 1.0 documentation</a> &raquo;</li>
-          <li><a href="Idamous.html" >Idamous</a> &raquo;</li>
+        <li><a href="index.html">FoRREST 1.0 documentation</a> &raquo;</li>
+          <li><a href="FoRREST.html" >FoRREST</a> &raquo;</li>
           <li><a href="Plugins.html" >Plugins</a> &raquo;</li> 
       </ul>
     </div>

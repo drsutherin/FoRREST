@@ -7,5 +7,5 @@ Raw
 
 The main purpose of this class is to handle getting meta-data about files.
 
-.. autoclass:: Idamous.plugins.raw.File.File
+.. autoclass:: FoRREST.plugins.raw.File.File
    :members:

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Extract &mdash; Idamous 1.0 documentation</title>
+    <title>Extract &mdash; FoRREST 1.0 documentation</title>
     
     <link rel="stylesheet" href="static/default.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="Idamous 1.0 documentation" href="index.html" />
+    <link rel="top" title="FoRREST 1.0 documentation" href="index.html" />
     <link rel="up" title="Plugins" href="Plugins.html" />
     <link rel="next" title="Interpret" href="Interpret.html" />
     <link rel="prev" title="Raw" href="Raw.html" /> 
@@ -41,8 +41,8 @@
         <li class="right" >
           <a href="Raw.html" title="Raw"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Idamous 1.0 documentation</a> &raquo;</li>
-          <li><a href="Idamous.html" >Idamous</a> &raquo;</li>
+        <li><a href="index.html">FoRREST 1.0 documentation</a> &raquo;</li>
+          <li><a href="FoRREST.html" >FoRREST</a> &raquo;</li>
           <li><a href="Plugins.html" accesskey="U">Plugins</a> &raquo;</li> 
       </ul>
     </div>  
@@ -73,11 +73,11 @@ raw data stored within the file.</p>
 <li>python-magic</li>
 </ul>
 <dl class="class">
-<dt id="Idamous.plugins.extract.Extract.Extract">
-<em class="property">class </em><tt class="descclassname">Idamous.plugins.extract.Extract.</tt><tt class="descname">Extract</tt><big>(</big><em>idamous</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract">
+<em class="property">class </em><tt class="descclassname">FoRREST.plugins.extract.Extract.</tt><tt class="descname">Extract</tt><big>(</big><em>forrest</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_architecture">
-<tt class="descname">get_architecture</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_architecture" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_architecture">
+<tt class="descname">get_architecture</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_architecture" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the architecture the file was compiled for.</dd>
@@ -90,8 +90,8 @@ returns &#8220;x86-64&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_compiler">
-<tt class="descname">get_compiler</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_compiler" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_compiler">
+<tt class="descname">get_compiler</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_compiler" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the name of the compiler used to compile the file if
@@ -105,8 +105,8 @@ returns &#8220;GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4.&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_elf_header">
-<tt class="descname">get_elf_header</tt><big>(</big><em>item=None</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_elf_header" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_elf_header">
+<tt class="descname">get_elf_header</tt><big>(</big><em>item=None</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_elf_header" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Gets the data from the elf header and returns it.</dd>
@@ -126,8 +126,8 @@ returns &#8220;GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4.&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_filetype">
-<tt class="descname">get_filetype</tt><big>(</big><em>mime=True</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_filetype" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_filetype">
+<tt class="descname">get_filetype</tt><big>(</big><em>mime=True</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_filetype" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the type of file for the current file based on a
@@ -144,8 +144,8 @@ Returns: text/x-bash;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_section_ascii">
-<tt class="descname">get_section_ascii</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_section_ascii" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_section_ascii">
+<tt class="descname">get_section_ascii</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_section_ascii" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the given <cite>section</cite> in ascii.</dd>
@@ -160,8 +160,8 @@ returns &#8220;GCC: (Ubuntu 4.8.4-2ubuntu1~14.0.4.3) 4.8.4.&#8221;</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_section_hex">
-<tt class="descname">get_section_hex</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_section_hex" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_section_hex">
+<tt class="descname">get_section_hex</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_section_hex" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the given <cite>section</cite> in hex.</dd>
@@ -176,8 +176,8 @@ returns [[23, 89, 43], [34, 59, 83], [45]]</dd>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_sections">
-<tt class="descname">get_sections</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_sections" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_sections">
+<tt class="descname">get_sections</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_sections" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns a list of section headers for a file.</dd>
@@ -198,8 +198,8 @@ etc</div></blockquote>
 </dd></dl>
 
 <dl class="method">
-<dt id="Idamous.plugins.extract.Extract.Extract.get_version">
-<tt class="descname">get_version</tt><big>(</big><big>)</big><a class="headerlink" href="#Idamous.plugins.extract.Extract.Extract.get_version" title="Permalink to this definition">¶</a></dt>
+<dt id="FoRREST.plugins.extract.Extract.Extract.get_version">
+<tt class="descname">get_version</tt><big>(</big><big>)</big><a class="headerlink" href="#FoRREST.plugins.extract.Extract.Extract.get_version" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Description:</dt>
 <dd>Returns the version number of the binary if present.</dd>
@@ -261,8 +261,8 @@ returns &#8220;5.4.0&#8221;</dd>
         <li class="right" >
           <a href="Raw.html" title="Raw"
              >previous</a> |</li>
-        <li><a href="index.html">Idamous 1.0 documentation</a> &raquo;</li>
-          <li><a href="Idamous.html" >Idamous</a> &raquo;</li>
+        <li><a href="index.html">FoRREST 1.0 documentation</a> &raquo;</li>
+          <li><a href="FoRREST.html" >FoRREST</a> &raquo;</li>
           <li><a href="Plugins.html" >Plugins</a> &raquo;</li> 
       </ul>
     </div>

@@ -12,5 +12,5 @@ Requirements:
 
 * python-magic
 
-.. autoclass:: Idamous.plugins.extract.Extract.Extract
+.. autoclass:: FoRREST.plugins.extract.Extract.Extract
    :members:
