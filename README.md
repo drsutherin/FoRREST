@@ -23,9 +23,11 @@ This framework is currently designed for Linux
 * Clone the project from [https://github.com/drsutherin/FoRREST](https://github.com/drsutherin/FoRREST)
 * Install peewee: ```pip install peewee```
 * Install python-magic ```pip install python-magic```
-* Install [Radare2]((https://github.com/radare/radare2)
+* Intall pyreadline ```pip install pyreadline```
+* Install [Radare2](https://github.com/radare/radare2)
   * ```git clone https://github.com/radare/radare2```
   * ```radare2/sys/install.sh```
+  * Install r2pipe ```pip install r2pipe```
 * Install angr
   * Follow [their instructions](http://docs.angr.io/INSTALL.html) to make sure all angr's dependencies are installed
 
