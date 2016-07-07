@@ -1,4 +1,4 @@
-IDAMOUS HELP
+FoRREST HELP
         FoRREST is a framework of tools for reverse engineering binary executable files
 FUNCTIONS:
 load [file]
