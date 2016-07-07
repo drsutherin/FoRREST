@@ -15,9 +15,15 @@ This framework is currently designed for Linux
 
 ## Requirements
 * Python 2.7
-  * [peewee](https://github.com/coleifer/peewee)
+* python-magic
+* pyreadline
+* [peewee](https://github.com/coleifer/peewee)
 * [Radare2](https://github.com/radare/radare2)
 * angr
+  * angr-utils
+  * pydot
+  * networkx
+  * graphviz
 
 ## Installation
 * Clone the project from [https://github.com/drsutherin/FoRREST](https://github.com/drsutherin/FoRREST)
@@ -30,6 +36,9 @@ This framework is currently designed for Linux
   * Install r2pipe ```pip install r2pipe```
 * Install angr
   * Follow [their instructions](http://docs.angr.io/INSTALL.html) to make sure all angr's dependencies are installed
+* Install pydot ```pip install pydot```
+* Install networkx ```pip install networkx```
+* Install graphviz ```apt-get install graphviz```
 
 ## Running
 To run the program with the command line interface, from the root directory:
