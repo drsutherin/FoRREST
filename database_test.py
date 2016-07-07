@@ -1,7 +1,7 @@
 
-from Idamous import Idamous
+from FoRREST import FoRREST
 
-# If you call idamous.py, run this.
+# If you call forrest.py, run this.
 if __name__ == '__main__':
-    idamous = Idamous('test_binaries/custom_binaries/gen_fib.o')
-    idamous.raw.add_entry()
+    forrest = FoRREST('test_binaries/custom_binaries/gen_fib.o')
+    forrest.raw.add_entry()

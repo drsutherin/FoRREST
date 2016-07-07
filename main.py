@@ -1,5 +1,5 @@
 
-from Idamous import Idamous
+from FoRREST import FoRREST
 import subprocess
 import os
 import sys
@@ -16,7 +16,7 @@ def start_shell():
     print "Type 'help' to see all available commands!"
     print ""
     
-    idamous = Idamous()
+    forrest = FoRREST()
     
     should_continue = True
     quit = [
@@ -48,8 +48,8 @@ def start_shell():
                     print '[-] Error: Please provide a method.'
                     continue
 
-            if func in dir(idamous):
-                fun = getattr(idamous, func)
+            if func in dir(forrest):
+                fun = getattr(forrest, func)
                 
                 try:
                     if obj:
@@ -64,12 +64,12 @@ def start_shell():
             else:
                 print "[-] That command does not exist!"
 
-# If you call idamous.py, run this.
+# If you call forrest.py, run this.
 if __name__ == '__main__':
     if len(sys.argv) >= 2:
         if len(sys.argv) >= 4 and sys.argv[1].lower() == "-c":
-            idamous = Idamous()
-            idamous.set_file(sys.argv[2])
+            forrest = FoRREST()
+            forrest.set_file(sys.argv[2])
             
             cmd = sys.argv[3]
             func = cmd.split()[0]
@@ -90,8 +90,8 @@ if __name__ == '__main__':
                     print '[-] Error: Please provide a method.'
                     exit(0)
 
-            if func in dir(idamous):
-                fun = getattr(idamous, func)
+            if func in dir(forrest):
+                fun = getattr(forrest, func)
                 
                 var = None
                 
@@ -122,10 +122,10 @@ if __name__ == '__main__':
             else:
                 temp_file = sys.argv[1]
             
-            idamous = Idamous()
-            idamous.set_file(temp_file)
-            print idamous.get_raw_data()
-            print idamous.get_extracted_data()
-            print idamous.get_interpreted_data()
+            forrest = FoRREST()
+            forrest.set_file(temp_file)
+            print forrest.get_raw_data()
+            print forrest.get_extracted_data()
+            print forrest.get_interpreted_data()
     else:
         start_shell()

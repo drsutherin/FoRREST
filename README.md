@@ -1,4 +1,4 @@
-# Idamous
+# FoRREST
 Reverse Engineering Framework
 
 Version 0.8
@@ -18,14 +18,14 @@ This framework is currently designed for Linux
 To run the program:
 
 ```
-python Idamous.py
+python FoRREST.py
 ```
 
 ## Extending
 To extend the program, just import idamous.
 
 ```
-import Idamous
+import FoRREST
 ```
 
 # Levels of Representation

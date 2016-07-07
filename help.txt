@@ -1,5 +1,5 @@
 IDAMOUS HELP
-        Idamous is a framework of tools for reverse engineering binary executable files
+        FoRREST is a framework of tools for reverse engineering binary executable files
 FUNCTIONS:
 load [file]
         Loads the specified file
@@ -10,4 +10,4 @@ get_interpreted_data
 get_raw_data
         Gets raw data about the currently loaded file: filename, file extension, file size, inode, path, MD5 sum, and SHA1 sum
 quit
-        Exits Idamous
+        Exits FoRREST
