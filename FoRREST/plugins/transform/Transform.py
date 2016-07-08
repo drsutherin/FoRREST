@@ -52,20 +52,11 @@ class Transform:
         return term_out
 
     def get_basic_blocks(self):
-        try:
-	    import angr
-            #from angrutils import *
-            from .visualize import plot_cfg
-            proj = angr.Project(self._get_file(), load_options={'auto_load_libs':False})
-            main = proj.loader.main_bin.get_symbol("main")
-            start_state = proj.factory.blank_state(addr=main.addr)
-            cfg = proj.analyses.CFGAccurate(fail_fast=True, starts=[main.addr], initial_state=start_state)
-            plot_cfg(cfg, "%s_cfg" % self._get_file(), asminst=True, remove_imports=True, remove_path_terminator=True)
-            print "CFG saved as %s_cfg.png" % self._get_file()
-        except ImportError:
-            print "[-] Could not load angr/angrutils"
-            print "[-] Do you have it installed?"
-        return
+        '''
+        Get entry and exit points for each block
+        '''
+
+        pass
 
 
     def get_data_references(self):

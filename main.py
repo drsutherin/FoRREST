@@ -50,17 +50,66 @@ def start_shell():
 
             if func in dir(forrest):
                 fun = getattr(forrest, func)
-                
+
                 try:
                     if obj:
-                        fun = getattr(fun, method)
-                        
+                        fun = getattr(fun, method)                        
                         print fun()
                     else:
                         print fun(params)
                 except Exception as e:
                     print '[-] function failed to run.'
                     print e
+
+	    # Elifs allow users to call plugin functions directly from the command line
+	    # There's probably a short/cleaner way to do this, but this works -DS 7/8
+
+	    # Gives access to Raw functions
+            elif func in dir(forrest.raw):
+                fun = getattr(forrest.raw, func)
+                try:
+                    print fun()
+                except Exception as e:
+                    print "[-] raw function failed to run."
+                    print e
+
+	    # Gives access to Extract functions
+            elif func in dir(forrest.extract):
+                fun = getattr(forrest.extract, func)
+                try:
+                    print fun()
+                except Exception as e:
+                    print "[-] raw function failed to run."
+                    print e
+
+	    # Gives access to Interpret functions
+            elif func in dir(forrest.interpret):
+                fun = getattr(forrest.interpret, func)
+                try:
+                    print fun()
+                except Exception as e:
+                    print "[-] raw function failed to run."
+                    print e
+
+	    # Gives access to Transform functions
+            elif func in dir(forrest.transform):
+                fun = getattr(forrest.transform, func)
+                try:
+                    print fun()
+                except Exception as e:
+                    print "[-] raw function failed to run."
+                    print e
+
+            # Gives access to Infer functions
+            elif func in dir(forrest.infer):
+                fun = getattr(forrest.infer, func)
+                try:
+                    print fun()
+                except Exception as e:
+                    print "[-] raw function failed to run."
+                    print e
+
+
             else:
                 print "[-] That command does not exist!"
 

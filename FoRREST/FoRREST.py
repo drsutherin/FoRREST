@@ -18,6 +18,7 @@ class FoRREST:
         self.extract = extract.Extract.Extract(self)
         self.interpret = interpret.Interpret.Interpret(self)
         self.transform = transform.Transform.Transform(self)
+        self.infer = infer.Infer.Infer(self)
    
     def set_file(self, params):
         if type(params) == str:
@@ -27,6 +28,7 @@ class FoRREST:
         
         if (os.path.isfile(filename)):
             self.current_file = filename
+            return "File %s successfully loaded" % self.current_file
         else:
             print "[-] That file does not exist!"
         
