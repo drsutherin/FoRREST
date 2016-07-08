@@ -3,11 +3,11 @@
  
 class Transform:
     
-    def __init__(self, idamous):
-        self.idamous = idamous
+    def __init__(self, forrest):
+        self.forrest = forrest
     
     def _get_file(self):
-        return self.idamous.get_file()
+        return self.forrest.get_file()
 
     def check_r2(self):
         good = True

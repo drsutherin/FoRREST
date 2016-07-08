@@ -6,11 +6,11 @@
 
 class Extract:
     
-    def __init__(self, idamous):
-        self.idamous = idamous
+    def __init__(self, forrest):
+        self.forrest = forrest
         
     def _get_file(self):
-        return self.idamous.get_file()
+        return self.forrest.get_file()
 
     def get_filetype(self, meme = True):
         """
@@ -91,14 +91,14 @@ class Extract:
         return word
         
     def get_section_hex(self, section):
-        out, err = self.idamous._shell('objdump', ['-s', '--section', section, self._get_file()])
+        out, err = self.forrest._shell('objdump', ['-s', '--section', section, self._get_file()])
         out = map(lambda x: x.lstrip(), out)
         out = [x.split(' ', 5)[1:5] for x in out[4:]]
         
         return out
         
     def get_elf_header(self, item = None):
-        out, err = self.idamous._shell('readelf', ["-h", self._get_file()])
+        out, err = self.forrest._shell('readelf', ["-h", self._get_file()])
 
         temp = [x.split(':', 1) for x in out]
         temp = [y.strip() for x in temp for y in x]
@@ -138,6 +138,6 @@ class Extract:
                     etc
                 ]
         """
-        out, err = self.idamous._shell('objdump', ['-h', self._get_file()])
+        out, err = self.forrest._shell('objdump', ['-h', self._get_file()])
 
         return [x.strip().split()[1] for x in out[5:][::2]]

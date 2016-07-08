@@ -1,10 +1,10 @@
 class Interpret:
 
-    def __init__(self, idamous):
-        self.idamous = idamous
+    def __init__(self, forrest):
+        self.forrest = forrest
         
     def _get_file(self):
-        return self.idamous.get_file()
+        return self.forrest.get_file()
 
     def get_opcodes(self):
         """
@@ -30,7 +30,7 @@ class Interpret:
                     etc
                 ]
         """
-        out, err = self.idamous._shell('objdump', ['-d', self._get_file()])
+        out, err = self.forrest._shell('objdump', ['-d', self._get_file()])
         
         instructions = {}
         namespace = []
@@ -87,7 +87,7 @@ class Interpret:
                     etc
                 ]
         """
-        out, err = self.idamous._shell('strings', self._get_file())
+        out, err = self.forrest._shell('strings', self._get_file())
 
         return out
 
@@ -117,8 +117,8 @@ class Interpret:
                     etc
                 ]
         """
-        stdout = self.idamous._shell_std('nm', ['-C', '--dynamic', self._get_file()])
-        out, err = self.idamous._shell('grep', 'U', stdout)
+        stdout = self.forrest._shell_std('nm', ['-C', '--dynamic', self._get_file()])
+        out, err = self.forrest._shell('grep', 'U', stdout)
 
         return [x.split()[1] for x in out]
 
@@ -143,7 +143,7 @@ class Interpret:
                 'printf'
             ]
         """
-	out, err = self.idamous._shell('nm', ['-g',  self._get_file()])
+	out, err = self.forrest._shell('nm', ['-g',  self._get_file()])
 	
 	term_out = []
 
@@ -174,9 +174,9 @@ class Interpret:
 	#private headers
 	program_head = []
 
-	stdout = self.idamous._shell_std('objdump', ['-p', self._get_file()])
+	stdout = self.forrest._shell_std('objdump', ['-p', self._get_file()])
 	
-	private_head_out, err = self.idamous._shell('grep', 'off', stdout)
+	private_head_out, err = self.forrest._shell('grep', 'off', stdout)
 	
 	for x in private_head_out:
 	    program_head.append(x.split()[0])
@@ -186,10 +186,10 @@ class Interpret:
 	dynamic_head = []
 	
 	#search for the Dynamic Secion
-	stdout1 = self.idamous._shell('sed','-n', '"/Dynamic Section:/,/^$/p"' , stdout)
+	stdout1 = self.forrest._shell('sed','-n', '"/Dynamic Section:/,/^$/p"' , stdout)
 	
 	#remove 'Dynamic Section' from the output
-	dynamic_head_out, err = self.idamous._shell('grep', '-v', '"Dynamic Section:"', stdout1)
+	dynamic_head_out, err = self.forrest._shell('grep', '-v', '"Dynamic Section:"', stdout1)
 	
 	for x in dynamic_head_out:
 	    dynamic_head.append(x.split()[0])

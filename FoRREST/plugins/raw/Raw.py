@@ -5,12 +5,12 @@ from Model import Raw_Model
 
 class Raw:
 
-    def __init__(self, idamous):
-        self.idamous = idamous
+    def __init__(self, forrest):
+        self.forrest = forrest
         self.file = None
         
     def _get_file(self):
-        return self.idamous.get_file()
+        return self.forrest.get_file()
 
     def add_entry(self):
         if self._get_file() != None:
@@ -57,7 +57,7 @@ class Raw:
             Returns the size of the current file in bytes.
             
             Example:
-                3343 idamous.py
+                3343 forrest.py
                 returns: 3343
         """
         return os.stat(self._get_file()).st_size
@@ -67,7 +67,7 @@ class Raw:
             Returns the inode of the current file.
             
             Example:
-                303 idamous.py
+                303 forrest.py
                 returns: 303
         """
         return os.stat(self._get_file()).st_ino
