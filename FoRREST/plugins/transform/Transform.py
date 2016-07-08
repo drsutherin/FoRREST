@@ -40,7 +40,7 @@ class Transform:
             out = r2.cmd('afl')
 	    #properly split the list
 	    out = out.split('\n')
-	#parse for the functions
+	    #parse for the functions
             for x in out:
     	    	if len(x.split()) == 6:
     	     	    term_out.append(x.split()[5])
@@ -60,13 +60,19 @@ class Transform:
 
 
     def get_data_references(self):
-        '''
-        if self.check_r2() == True:
-            r2 = r2pipe.open(self._get_file)
-            r2.cmd('/R ')
+        try:
+	    import r2pipe
+            r2 = r2pipe.open(self._get_file())
+            out = r2.cmd('/R mov ~mov')
+            out += r2.cmd('/R lea ~lea | grep -v leave')
+	    out = out.split('\n')
+	    for x in out:
+    		del out[0]
+    		del out[0]
+	except ImportError:
+	    print "[-] Failed to load r2pipe"
+            print "[-] Do you have it installed?"	
         return out
-        '''
-        pass
     
     def get_jump_targets(self):
         try:
