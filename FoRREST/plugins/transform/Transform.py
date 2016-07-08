@@ -9,32 +9,31 @@ class Transform:
     def _get_file(self):
         return self.forrest.get_file()
 
-    def check_r2(self):
-        good = True
-        try:
-            import r2pipe
-        except ImportError:
-            print "[-] Failed to load r2pipe"
-            print "[-] Do you have it installed?"
-            good = False
-        return good
-
     def get_disassembly(self):
-        if self.check_r2() == True:
-            r2 = r2pipe.open(self._get_file)
+	try:
+	    import r2pipe
+            r2 = r2pipe.open(self._get_file())
             out = r2.cmd('pi $s ~!invalid')
 	    out = out.split('\n')
+	except ImportError:
+            print "[-] Failed to load r2pipe"
+            print "[-] Do you have it installed?"
  	return out
 
     def get_mnemonics(self):
-        if self.check_r2() == True:
-            r2 = r2pipe.open(self._get_file)
+        try:
+	    import r2pipe
+            r2 = r2pipe.open(self._get_file())
             out = r2.cmd('pi $s ~!invalid')
+	except ImportError:
+            print "[-] Failed to load r2pipe"
+            print "[-] Do you have it installed?"
         return [x.split()[0] for x in out]
 
     def get_functions(self):
-        if self.check_r2() == True:
-            r2 = r2pipe.open(self._get_file)
+        try:
+	    import r2pipe
+            r2 = r2pipe.open(self._get_file())
             #analyze the functions
             r2.cmd('af')
 	    #list the functions
@@ -42,12 +41,14 @@ class Transform:
 	    #properly split the list
 	    out = out.split('\n')
 	#parse for the functions
-        for x in out:
-    	    if len(x.split()) == 6:
-    	     	term_out.append(x.split()[5])
-            else:
-		term_out.append(x.split()[3])
-
+            for x in out:
+    	    	if len(x.split()) == 6:
+    	     	    term_out.append(x.split()[5])
+            	else:
+		    term_out.append(x.split()[3])
+	except ImportError:
+            print "[-] Failed to load r2pipe"
+            print "[-] Do you have it installed?"
         return term_out
 
     def get_basic_blocks(self):
@@ -77,11 +78,11 @@ class Transform:
         pass
     
     def get_jump_targets(self):
-        #needs parsing
-        if self.check_r2() == True:
+        try:
+	    import r2pipe
             term_out = []
 
-	    r2 = r2pipe.open(self._get_file)
+	    r2 = r2pipe.open(self._get_file())
 	    out = r2.cmd('/R j ~j ')
 	    out = out.split('\n')
 
@@ -93,7 +94,10 @@ class Transform:
 	    	    jump += ' ' + x_split[4]
 
 	    	term_out.append(jump)
-		   	
+	except ImportError:
+            print "[-] Failed to load r2pipe"
+            print "[-] Do you have it installed?"
+
 	return term_out
 
     
