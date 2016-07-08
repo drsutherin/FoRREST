@@ -79,7 +79,22 @@ class FoRREST:
                 "load [filename]"
         
         return output
-    
+
+    def get_transformed_data(self, params = None):
+	output = {}
+	
+	if self.current_file:
+	    output['disassembly'] = self.transform.get_disassembly()
+	    output['mnemonics'] = self.transform.get_mnemonics()
+	    output['functions'] = self.transform.get_functions()
+	    output['basic_blocks'] = self.transform.get_basic_blocks()
+	    output['data_references'] = self.transform.get_data_references()
+	    output['jump_targets'] = self.transform.get_jump_targets()
+	else:
+	    print "No file selected! Please select with",\
+                "load [filename]"
+	return output
+
     # Add test to make sure the file is loaded    
     def get_strings(self, params = None):
         output = self.interpret.get_strings()
