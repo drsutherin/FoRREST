@@ -9,5 +9,49 @@ get_interpreted_data
         Gets interpreted data about the currently loaded file: strings, ...
 get_raw_data
         Gets raw data about the currently loaded file: filename, file extension, file size, inode, path, MD5 sum, and SHA1 sum
+get_transformed_data
+	Gets the transformed data about the currently loaded file:
+get_name
+	Returns the filename of the current file.
+get_extensions
+	Returns the extension of the current file.
+get_size
+	Returns the size of the current file in bytes.
+get_inode
+	Returns the inode of the current file.
+get_path
+	Returns the path to the file.
+get_md5
+	Returns the MD5 sum for the file.
+get_sha[]
+	Returns the sha sum for the file. Use 1, 256, or 512 in the command for the sum.
+get_filetype
+	Returns the type of file.
+get_version
+	Returns the version number of a binary if present.
+get_architecture
+	Returns the architecture the file was compiled for.
+get_compiler
+	Returns the name of the compiler used to compile the binary if present.
+get_sections
+	Returns a list of section headers for a file.
+get_elf_header
+	Returns the elf header...
+get_opcodes
+	Returns a list of assembly code in binary.
+get_strings
+	Returns a list of strings found in the binary.
+get_imports
+	Returns a list of all the functions the binary references from a linked file object.
+get_exports
+	Returns a list of functions and variables that the binary akes available outside the program.
+get_mnemonics
+	Returns a list of the mnemonics from a binary.
+get_functions
+	Returns a list functions from a binary.
+get_data_references
+	Returns a list of data references from a binary.
+get_jump_targets
+	Returns a list of the jump targets in a binary.
 quit
         Exits FoRREST
