@@ -110,9 +110,9 @@ class Raw:
         hash_algo = hashlib.sha512()
         return Raw.hash_file(self._get_file(), hash_algo)
 
-    def read_chunck(self, chunksize=4096):
+    def read_chunk(self, chunksize=4096):
         """
-            Returns a chunck of the file. By default, the size is 4096.
+            Returns a chunk of the file. By default, the size is 4096.
             The function will start at the beginning and hold its position
             each read.
             Once the file has been completely read in, calling this function
@@ -130,7 +130,7 @@ class Raw:
         
     def reset_read(self):
         """
-            Force reset the read_chunck method to start at the beginning.
+            Force reset the read_chunk method to start at the beginning.
         """
         if self.file != None:
             self.file.close()
