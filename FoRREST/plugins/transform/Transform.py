@@ -14,25 +14,26 @@ class Transform:
 	    import r2pipe
             r2 = r2pipe.open(self._get_file())
             out = r2.cmd('pi $s ~!invalid')
-	    out = out.split('\n')
 	except ImportError:
             print "[-] Failed to load r2pipe"
             print "[-] Do you have it installed?"
  	return out
 
     def get_mnemonics(self):
-        try:
+	try:
 	    import r2pipe
             r2 = r2pipe.open(self._get_file())
             out = r2.cmd('pi $s ~!invalid')
+	    out = out.split('\n')
 	except ImportError:
             print "[-] Failed to load r2pipe"
             print "[-] Do you have it installed?"
         return [x.split()[0] for x in out]
 
     def get_functions(self):
-        try:
+	try:
 	    import r2pipe
+	    term_out = []
             r2 = r2pipe.open(self._get_file())
             #analyze the functions
             r2.cmd('af')
@@ -60,7 +61,7 @@ class Transform:
 
 
     def get_data_references(self):
-        try:
+	try:
 	    import r2pipe
             r2 = r2pipe.open(self._get_file())
             out = r2.cmd('/R mov ~mov')
@@ -75,7 +76,7 @@ class Transform:
         return out
     
     def get_jump_targets(self):
-        try:
+	try:
 	    import r2pipe
             term_out = []
 
