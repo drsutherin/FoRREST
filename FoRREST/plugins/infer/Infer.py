@@ -15,7 +15,7 @@ class Infer:
             start_state = proj.factory.blank_state(addr=main.addr)
             cfg = proj.analyses.CFGAccurate(fail_fast=True, starts=[main.addr], initial_state=start_state)
             plot_cfg(cfg, "%s_cfg" % self._get_file(), asminst=True, remove_imports=True, remove_path_terminator=True)
-            print "CFG saved as %s_cfg.png" % self._get_file()
+            return "[+] CFG saved as %s_cfg.png" % self._get_file()
         except ImportError:
             print "[-] Could not load angr"
             print "[-] Do you have it installed?"

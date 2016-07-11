@@ -28,7 +28,7 @@ class FoRREST:
         
         if (os.path.isfile(filename)):
             self.current_file = filename
-            return "File %s successfully loaded" % self.current_file
+            return "[+] File %s successfully loaded" % self.current_file
         else:
             print "[-] That file does not exist!"
         
@@ -116,7 +116,7 @@ class FoRREST:
         else:
             cmd.extend(args)
             
-        print 'running', cmd
+        #print 'running', cmd
         
         if stdin:
             out, err = subprocess.Popen(cmd, stdin=stdin, stdout=subprocess.PIPE).communicate()
@@ -138,7 +138,7 @@ class FoRREST:
         else:
             cmd.extend(args)
             
-        print 'running', cmd
+        #print 'running', cmd
         
         if stdin:
             out = subprocess.Popen(cmd, stdin=stdin, stdout=subprocess.PIPE)
