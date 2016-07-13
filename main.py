@@ -3,178 +3,140 @@ from FoRREST import FoRREST
 import subprocess
 import os
 import sys
-#adds a history function to the cli interface
+
+# Adds a history function to the cli interface
 import readline
 
-def start_shell():
-    print ""
-    print "FoRREST: A Framework of Robust Reverse Engineering Software Tools"
-    print "---------------------------------------------------------------"
-    print "Run, FoRREST, run!"
-    print "---------------------------------------------------------------"
-    print "Begin by loading your binay with the 'load [yourfile]' command."
-    print "Type 'help' to see all available commands!"
-    print ""
-    
-    forrest = FoRREST()
-    
+def display_help(params = []):
+    if len(params) is 0:
+        print ""
+        print "FoRREST: A Framework of Robust Reverse Engineering Software Tools"
+        print "---------------------------------------------------------------"
+        print "Run, FoRREST, run!"
+        print "---------------------------------------------------------------"
+        print "Begin by loading your binay with the 'load [yourfile]' command."
+        print "Type 'ls' to see all available commands!"
+        print ""
+    elif len(params) is 1 and params[0] == "ls":
+        # Get all functions that don't start with _ and print them out.
+        for func in [func for func in dir(FoRREST) if not func.startswith("_")]:
+            print func
+
+def get_cmd(cmd = None):
+    if not cmd:
+        cmd = raw_input("FoRREST> ").split()
+    else:
+        cmd = cmd.split()
+
+    func = cmd[0]
+    params = cmd[1:]
+
+    if func == "load": func = "set_file"
+    if func == "ls":
+        func = "help"
+        params = ["ls"]
+
+    return func, params
+
+def run_func(forrest, func, params):
+    return_value = "[-] Function failed to run!"
+
+    is_obj = False
+
+    if func not in dir(forrest):
+        is_obj = True
+        temp = func.split('.', 1)
+        if len(temp) > 1:
+            func = temp[0]
+            method = temp[1]
+        else:
+            return return_value
+
+    try:
+        fun = getattr(forrest, func)
+
+        try:
+            if is_obj:
+                fun = getattr(fun, method)                        
+                return_value = fun()
+            else:
+                return_value = fun(params)
+        except Exception as e:  
+            print e
+
+    except Exception as e:
+        print e
+
+    return return_value
+
+def shell(forrest = FoRREST(), should_display_help = True):
+    if should_display_help: display_help()
+
     should_continue = True
+
     quit = [
         'quit',
         'exit'
     ]
-    
+
     while should_continue:
-        cmd = raw_input("FoRREST> ")
-    
-        if cmd.lower() in quit:
+        func, params = get_cmd()
+
+        if func in quit:
             should_continue = False
+        elif func == "help":
+            display_help(params)
         else:
-            func = cmd.split()[0]
-            params = cmd.split()[1:]
-            
-            if func == "help": func = "get_help"
-            if func == "load": func = "set_file"
-            
-            obj = False
-            
-            if func[0] == '&':
-                obj = True
-                temp = func[1:].split('.', 1)
-                if len(temp) > 1:
-                    func = temp[0]
-                    method = temp[1]
-                else:
-                    print '[-] Error: Please provide a method.'
-                    continue
+            print run_func(forrest, func, params)
 
-            if func in dir(forrest):
-                fun = getattr(forrest, func)
+def test_forrest(test_file):
+    forrest = FoRREST()
+    forrest.set_file(test_file)
 
-                try:
-                    if obj:
-                        fun = getattr(fun, method)                        
-                        print fun()
-                    else:
-                        print fun(params)
-                except Exception as e:
-                    print '[-] function failed to run.'
-                    print e
+    print "\nRaw Data:"
+    print forrest.get_raw()
 
-	    # Elifs allow users to call plugin functions directly from the command line
-	    # There's probably a short/cleaner way to do this, but this works -DS 7/8
+    print "\nExtracted Data:"
+    print forrest.get_extracted()
 
-	    # Gives access to Raw functions
-            elif func in dir(forrest.raw):
-                fun = getattr(forrest.raw, func)
-                try:
-                    print fun()
-                except Exception as e:
-                    print "[-] raw function failed to run."
-                    print e
+    print "\nInterpreted Data:"
+    print forrest.get_interpreted()
 
-	    # Gives access to Extract functions
-            elif func in dir(forrest.extract):
-                fun = getattr(forrest.extract, func)
-                try:
-                    print fun()
-                except Exception as e:
-                    print "[-] raw function failed to run."
-                    print e
-
-	    # Gives access to Interpret functions
-            elif func in dir(forrest.interpret):
-                fun = getattr(forrest.interpret, func)
-                try:
-                    print fun()
-                except Exception as e:
-                    print "[-] raw function failed to run."
-                    print e
-
-	    # Gives access to Transform functions
-            elif func in dir(forrest.transform):
-                fun = getattr(forrest.transform, func)
-                try:
-                    print fun()
-                except Exception as e:
-                    print "[-] raw function failed to run."
-                    print e
-
-            # Gives access to Infer functions
-            elif func in dir(forrest.infer):
-                fun = getattr(forrest.infer, func)
-                try:
-                    print fun()
-                except Exception as e:
-                    print "[-] raw function failed to run."
-                    print e
-
-
-            else:
-                print "[-] That command does not exist!"
-
-# If you call forrest.py, run this.
 if __name__ == '__main__':
-    if len(sys.argv) >= 2:
-        if len(sys.argv) >= 4 and sys.argv[1].lower() == "-c":
-            forrest = FoRREST()
-            forrest.set_file(sys.argv[2])
-            
-            cmd = sys.argv[3]
-            func = cmd.split()[0]
-            params = cmd.split()[1:]
-            
-            if func == "help": func = "get_help"
-            if func == "load": func = "set_file"
-            
-            obj = False
-            
-            if func[0] == '&':
-                obj = True
-                temp = func[1:].split('.', 1)
-                if len(temp) > 1:
-                    func = temp[0]
-                    method = temp[1]
-                else:
-                    print '[-] Error: Please provide a method.'
-                    exit(0)
+    # Example: ['main.py', '-c', 'load filename', 'get_extracted']
+    # Removes main.py
+    args = sys.argv[1:]
+    filename = 0
 
-            if func in dir(forrest):
-                fun = getattr(forrest, func)
-                
-                var = None
-                
-                try:
-                    if obj:
-                        fun = getattr(fun, method)
-                        
-                        var = fun()
-                    else:
-                        var = fun(params)
-                except Exception as e:
-                    print '[-] function failed to run.'
-                    print e
-                    
-                if var:
-                    if type(var) == str:
-                        print var
-                    else:
-                        for x in var:
-                            print x
+    if len(args) is 0:
+        shell()
+    elif len(args) is 1 and args[filename].lower()[0] != "-":
+        print 'Running FoRREST test on {}.'.format(args[filename])
+        test_forrest(args[filename])
+    elif args[filename].lower() == "-c":
+        forrest = FoRREST()
+
+        # Go through each string and treat the string as an entry
+        # and run it.
+        for shell_command in args[1:]:
+            func, params = get_cmd(shell_command)
+            print run_func(forrest, func, params)
+    elif args[filename].lower() == "-d" or args[filename].lower() == "-e":
+        forrest = FoRREST()
+
+        # Treat arguments like names of files.
+        # Pretend like each file is a pre-defined
+        # list of shell commands.
+        for filename in args[1:]:
+            if os.path.isfile(filename):
+                with open(filename, 'r') as f:
+                    temp = f.read().splitlines()
+                    for line in temp:
+                        line = line.strip()
+                        if line:
+                            func, params = get_cmd(line)
+                            print run_func(forrest, func, params)
             else:
-                print "[-] That command does not exist!"
-        else:
-            temp_file = 'test_binaries/custom_binaries/generate_fib.out'
-            
-            if len(sys.argv) >= 3:
-                pass
-            else:
-                temp_file = sys.argv[1]
-            
-            forrest = FoRREST()
-            forrest.set_file(temp_file)
-            print forrest.get_raw_data()
-            print forrest.get_extracted_data()
-            print forrest.get_interpreted_data()
-    else:
-        start_shell()
+                print "[-] ERROR:", filename, "is not a file!"
+
+        if args[0].lower() == "-d": shell(forrest, False)

@@ -36,7 +36,7 @@ class FoRREST:
     def get_file(self, params = None):
         return self.current_file
         
-    def get_raw_data(self, params = None):
+    def get_raw(self, params = None):
         output = {}
 
         if self.current_file:
@@ -52,7 +52,7 @@ class FoRREST:
 
         return output
         
-    def get_extracted_data(self, params = None):
+    def get_extracted(self, params = None):
         output = {}
         
         if self.current_file:
@@ -67,7 +67,7 @@ class FoRREST:
         
         return output
         
-    def get_interpreted_data(self, params = None):
+    def get_interpreted(self, params = None):
         output = {}
         
         if self.current_file:
@@ -82,7 +82,7 @@ class FoRREST:
         
         return output
 
-    def get_transformed_data(self, params = None):
+    def get_transformed(self, params = None):
 	output = {}
 	
 	if self.current_file:
@@ -102,7 +102,7 @@ class FoRREST:
         output = self.interpret.get_strings()
         return output
 
-    def get_help(self, params = None):
+    def help(self, params = None):
         with open('help.txt', 'r') as f:
             print f.read()
     

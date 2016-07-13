@@ -15,4 +15,3 @@ sudo pip install networkx
 sudo apt-get install python-dev libffi-dev build-essential virtualenvwrapper
 sudo pip install -I --no-use-wheel angr-only-z3-custom
 mkvirtualenv angr && pip install angr # this may need to move up 2 lines
-
