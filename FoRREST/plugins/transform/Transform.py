@@ -14,6 +14,7 @@ class Transform:
 	    import r2pipe
             r2 = r2pipe.open(self._get_file())
             out = r2.cmd('pi $s ~!invalid')
+	    out = out.split('\n')
 	except ImportError:
             print "[-] Failed to load r2pipe"
             print "[-] Do you have it installed?"
