@@ -170,7 +170,7 @@ class Interpret:
             
             PEView - Windows only
             
-        """
+        
 	#private headers
 	program_head = []
 
@@ -195,4 +195,6 @@ class Interpret:
 	    dynamic_head.append(x.split()[0])
 	'''
         return program_head  #dynamic_head
+	"""
+	pass
 
