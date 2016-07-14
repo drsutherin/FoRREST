@@ -38,13 +38,13 @@ At this point, we are not offering support for FoRREST while running angr in a v
   * ```sudo apt-get install python-dev libffi-dev build-essential virtualenvwrapper```
 * Make sure virtualenvwrapper is callable from bash
   * ```whereis virtualenvwrapper```
-  * ```sudo chmod PATH/TO/virtualenvwrapper.sh```
+  * ```sudo chmod +x PATH/TO/virtualenvwrapper.sh```
   * Add the following to ```~/.bashrc```:
     * ```export WORKON_HOME=$HOME/.virtualenvs```
     * ```source PATH/TO/virtualenvwrapper.sh```
   * Then, ```source ~/.bashrc```
 * Install several angr dependencies individually (as they tend to cause errors)
-  * ```sudo apt-get install -I --no-use-wheel capstone angr-only-z3-custom
+  * ```sudo apt-get install -I --no-use-wheel capstone angr-only-z3-custom```
 * Finally, ```mkvirtualenv angr && pip install angr```
 
 
