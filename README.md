@@ -32,7 +32,7 @@ FoRREST is currently designed for Linux
 
 On angr's [installation page](http://docs.angr.io/INSTALL.html), they recommend using a Python virtual environment because they have their own versions of z3 and pyvex.  We do not currently do this in FoRREST, and the installation script will install the angr-custom versions of those programs.
 
-####angr as a virtual environment
+####angr in a Virtual Environment
 At this point, we are not offering support for FoRREST while running angr in a virtual environment.  However, following these instructions should help you avoid some common problems when installing angr:
 * Install dependencies:
   * ```sudo apt-get install python-dev libffi-dev build-essential virtualenvwrapper```
