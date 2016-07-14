@@ -43,21 +43,21 @@ class Infer:
         '''
         pass
 
-     def get_ir(self):
+    def get_ir(self):
         '''
         Will get the intermediate representation of the binary code
         Use angr->PyVex
         '''
         pass
 
-     def decompile(self):
+    def decompile(self):
         '''
         Will decompile the binary file into source code
         Use radeco/retdec-python/boomerang/snowman ?  I haven't been able to install any of them successfully thus far
         '''
         pass
 
-     def get_stack_frames(self):
+    def get_stack_frames(self):
         '''
         Will return the stack frames built by the program during execution
         Maybe add params to allow users to only check stack frames built by a given function?
@@ -65,14 +65,14 @@ class Infer:
         '''
         pass
 
-     def get_packet_captures(self):
+    def get_packet_captures(self):
         '''
         Record all attempts to send data over a network, including the data
         Use Linux tcpdump?
         '''
         pass
 
-     def symbolic_exec(self):
+    def symbolic_exec(self):
         '''
         Perform a symbolic execution to determine potential results
         Use angr's symbolic execution engine
@@ -80,7 +80,7 @@ class Infer:
         '''
         pass
 
-      def deobfuscate(self):
+    def deobfuscate(self):
         '''
         Deobfuscate the binary
         No idea how to implement this
@@ -88,7 +88,7 @@ class Infer:
         '''
         pass
 
-      def taint_analysis(self):
+    def taint_analysis(self):
         '''
         Peform a dynamic taint analysis to determine what data can be corrupted by user input and how that input is used
         Will probably involve data references/slicing
