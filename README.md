@@ -11,7 +11,7 @@ install tools into the framework for use.
 ## Background
 This project was started as part of a National Science Foundation Foundation funded research experience for undergraduates (REU) program at Wright State University in Dayton, Ohio.
 
-This framework is currently designed for Linux
+FoRREST is currently designed for Linux
 
 ## Requirements
 * Python 2.7
@@ -20,25 +20,33 @@ This framework is currently designed for Linux
 * [peewee](https://github.com/coleifer/peewee)
 * [Radare2](https://github.com/radare/radare2)
 * angr
-  * angr-utils
+  * [angr-utils](https://github.com/axt/angr-utils) \(necessary files included already\)
   * pydot
   * networkx
   * graphviz
 
 ## Installation
 * Clone the project from [https://github.com/drsutherin/FoRREST](https://github.com/drsutherin/FoRREST)
-* Install peewee: ```pip install peewee```
-* Install python-magic ```pip install python-magic```
-* Intall pyreadline ```pip install pyreadline```
-* Install [Radare2](https://github.com/radare/radare2)
-  * ```git clone https://github.com/radare/radare2```
-  * ```radare2/sys/install.sh```
-  * Install r2pipe ```pip install r2pipe```
-* Install angr
-  * Follow [their instructions](http://docs.angr.io/INSTALL.html) to make sure all angr's dependencies are installed
-* Install pydot ```pip install pydot```
-* Install networkx ```pip install networkx```
-* Install graphviz ```apt-get install graphviz```
+* cd into the FoRREST directory
+* Run ```install.sh```
+
+On angr's [installation page](http://docs.angr.io/INSTALL.html), they recommend using a Python virtual environment because they have their own versions of z3 and pyvex.  We do not currently do this in FoRREST, and the installation script will install the angr-custom versions of those programs.
+
+####angr as a virtual environment
+At this point, we are not offering support for FoRREST while running angr in a virtual environment.  However, following these instructions should help you avoid some common problems when installing angr:
+* Install dependencies:
+  * ```sudo apt-get install python-dev libffi-dev build-essential virtualenvwrapper```
+* Make sure virtualenvwrapper is callable from bash
+  * ```whereis virtualenvwrapper```
+  * ```sudo chmod PATH/TO/virtualenvwrapper.sh```
+  * Add the following to ```~/.bashrc```:
+    * ```export WORKON_HOME=$HOME/.virtualenvs```
+    * ```source PATH/TO/virtualenvwrapper.sh```
+  * Then, ```source ~/.bashrc```
+* Install several angr dependencies individually (as they tend to cause errors)
+  * ```sudo apt-get install -I --no-use-wheel capstone angr-only-z3-custom
+* Finally, ```mkvirtualenv angr && pip install angr```
+
 
 ## Running
 To run the program with the command line interface, from the root directory:
