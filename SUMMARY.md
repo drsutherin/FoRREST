@@ -1,5 +1,3 @@
 # Summary
 
-* [FoRREST](FoRREST)
-   * FoRREST
 
