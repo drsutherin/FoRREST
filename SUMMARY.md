@@ -1,5 +1,5 @@
 # Summary
 
 * [Introduction](README.md)
-* [Structure/Information Representation](structure.md)
+* [Structure/Data Representation](structure.md)
 
