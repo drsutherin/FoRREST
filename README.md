@@ -30,10 +30,12 @@ FoRREST is currently designed for Linux
 * cd into the FoRREST directory
 * Run ```install.sh```
 
+During the installation, you will be prompted as to whether you want to install angr.  This is to allow for a shorter installation time in the event that you only plan to use the lower level functions (e.g. using FoRREST as an introduction to reverse engineering).
+
+####A Note on angr
 On angr's [installation page](http://docs.angr.io/INSTALL.html), they recommend using a Python virtual environment because they have their own versions of z3 and pyvex.  We do not currently do this in FoRREST, and the installation script will install the angr-custom versions of those programs.
 
-####angr in a Virtual Environment
-At this point, we are not offering support for FoRREST while running angr in a virtual environment.  However, following these instructions should help you avoid some common problems when installing angr:
+At this point, we are not offering support for FoRREST while running angr in a virtual environment.  However, if you would like to install it in a virtual environment, following these instructions should help you avoid some common problems when installing angr:
 * Install dependencies:
   * ```sudo apt-get install python-dev libffi-dev build-essential virtualenvwrapper```
 * Make sure virtualenvwrapper is callable from bash
