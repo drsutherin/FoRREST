@@ -55,7 +55,33 @@ class Infer:
         Will decompile the binary file into source code
         Use radeco/retdec-python/boomerang/snowman ?  I haven't been able to install any of them successfully thus far
         '''
-        pass
+	import subprocess
+	from subprocess import call
+	import os
+
+	file = self._get_file()
+
+	path = os.path.expanduser('~')
+	os.chdir(path)
+
+	p = subprocess.Popen(['ls'], stdout = subprocess.PIPE)
+	p2 = subprocess.Popen(['grep', 'boomerang'], stdin = p.stdout, stdout = subprocess.PIPE)
+	
+	folder = p2.stdout.readline()
+
+	if folder != "":
+	    folder = folder.rstrip('\n')
+
+	    path = os.path.join(os.path.expanduser('~'), folder)
+	    os.chdir(path)
+
+	    path = os.path.join(os.path.expanduser('~'), 'FoRREST', 'outputs')
+	    call(["./boomerang" , "-o", path , file])
+
+	else:
+	    print "Boomerang not found. Process Terminated"
+
+        return
 
     def get_stack_frames(self):
         '''
