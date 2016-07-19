@@ -4,6 +4,8 @@
         * python-magic
 """
 
+from Model import Extract_Model
+
 class Extract:
     
     def __init__(self, forrest):
@@ -141,3 +143,27 @@ class Extract:
         out, err = self.forrest._shell('objdump', ['-h', self._get_file()])
 
         return [x.strip().split()[1] for x in out[5:][::2]]
+
+    def add_entry(self):
+        if self._get_file() != None:
+            return Extract_Model.add_entry(
+                filetype=self.get_filetype(),
+                version=self.get_version(),
+                architecture=self.get_architecture(),
+                compiler=self.get_compiler(),
+                sections=self.get_sections()
+            )
+        else: return None
+
+    @staticmethod
+    def select(model):
+        extract_model = model.extract[0]
+
+        class Model:
+            filetype=extract_model.filetype,
+            version=extract_model.version,
+            architecture=extract_model.architecture,
+            compiler=extract_model.compiler,
+            sections=[item.section for item in extract_model.sections]
+
+        return Model

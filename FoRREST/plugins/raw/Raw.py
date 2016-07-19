@@ -12,19 +12,6 @@ class Raw:
     def _get_file(self):
         return self.forrest.get_file()
 
-    def add_entry(self):
-        if self._get_file() != None:
-            Raw_Model.create(
-                name=self.get_name(),
-                extension=self.get_extension(),
-                size=self.get_size(),
-                inode=self.get_inode(),
-                path=self.get_path(),
-                md5sum=self.get_md5(),
-                sha1sum=self.get_sha1(),
-                sha256sum=self.get_sha256()
-            )
-
     def get_name(self):
         """
             Returns the filename of the current file.
@@ -136,6 +123,37 @@ class Raw:
             self.file.close()
             self.file = None
 
+    def add_entry(self):
+        if self._get_file() != None:
+            return Raw_Model.create(
+                name=self.get_name(),
+                extension=self.get_extension(),
+                size=self.get_size(),
+                inode=self.get_inode(),
+                path=self.get_path(),
+                md5sum=self.get_md5(),
+                sha1sum=self.get_sha1(),
+                sha256sum=self.get_sha256()
+            )
+        else: return None
+
+    @staticmethod
+    def select(model):
+
+        raw_model = model.raw[0]
+
+        class Model:
+            name=raw_model.name
+            extension=raw_model.extension
+            size=raw_model.size
+            inode=raw_model.inode
+            path=raw_model.path
+            md5sum=raw_model.md5sum
+            sha1sum=raw_model.sha1sum
+            sha256sum=raw_model.sha256sum
+
+        return Model
+
     @staticmethod
     def hash_file(filename, hash_algo):
         """
@@ -145,4 +163,3 @@ class Raw:
             for chunk in iter(lambda: f.read(4096), b""):
                 hash_algo.update(chunk)
         return hash_algo.hexdigest()
-

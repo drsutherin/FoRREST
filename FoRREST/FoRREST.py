@@ -5,6 +5,8 @@ import os
 from plugins import *
 import sys
 
+from Model import Forrest_Model
+
 class FoRREST:
 
     def __init__(self, filename=None):
@@ -105,6 +107,31 @@ class FoRREST:
     def help(self, params = None):
         with open('help.txt', 'r') as f:
             print f.read()
+
+    def add_entry(self, params = None):
+        return Forrest_Model.add_entry(self)
+
+    def select(self, params = None):
+        if type(params) == str:
+            sha256sum = params
+        else:
+            if params is not None:
+                sha256sum = params[0]
+            else:
+                if self.get_file():
+                    sha256sum = self.raw.get_sha256()
+                else:
+                    print "No file selected yet!"
+
+        entries = None
+
+        if sha256sum:
+            entries = Forrest_Model.select().where(
+                Forrest_Model.sha256sum == sha256sum
+            )
+
+        return entries
+
     
     def _shell(self, commandName, args, stdin=None):
         """

@@ -1,7 +1,7 @@
 from peewee import *
 import datetime
 
-db = SqliteDatabase('Idamous.db')
+db = SqliteDatabase('FoRREST.db')
 
 
 class Raw_Model(Model):
@@ -21,8 +21,10 @@ class Raw_Model(Model):
 
     @classmethod
     def add_entry(cls, **kwargs):
+        entry = None
+
         try:
-            cls.create(
+            entry = cls.create(
                 name = kwargs['name'],
                 extension = kwargs['extension'],
                 size = kwargs['size'],
@@ -36,6 +38,7 @@ class Raw_Model(Model):
             print 'Something went wrong with the database'
             print e
 
+        return entry
 
 db.connect()
 db.create_tables([Raw_Model], safe=True)
