@@ -19,6 +19,8 @@ FoRREST is currently designed for Linux
 * pyreadline
 * [peewee](https://github.com/coleifer/peewee)
 * [Radare2](https://github.com/radare/radare2)
+* [boomerang](http://www.boomerang.sourceforge.net)
+  * [libgc](http://prdownloads.sourceforge.net/boomerang/libgc.tar.bz2?download)
 * angr
   * [angr-utils](https://github.com/axt/angr-utils) \(necessary files included already\)
   * pydot
