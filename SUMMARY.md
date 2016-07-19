@@ -2,4 +2,5 @@
 
 * [Introduction](README.md)
 * [Structure/Data Representation](structure.md)
+* Basic Tutorial
 
