@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * [Structure/Data Representation](structure.md)
-* Tutorials
+* [Tutorials](tutorials.md)
 
