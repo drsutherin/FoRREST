@@ -39,33 +39,73 @@ def get_cmd(cmd = None):
     return func, params
 
 def run_func(forrest, func, params):
-    return_value = "[-] Function failed to run!"
+    return_value = ""
 
     is_obj = False
 
-    if func not in dir(forrest):
-        is_obj = True
-        temp = func.split('.', 1)
-        if len(temp) > 1:
-            func = temp[0]
-            method = temp[1]
-        else:
-            return return_value
+    if func in dir(forrest):
+                fun = getattr(forrest, func)
 
-    try:
-        fun = getattr(forrest, func)
+                try:
+                    if is_obj:
+                        fun = getattr(fun, method)                        
+                        print fun()
+                    else:
+                        print fun(params)
+                except Exception as e:
+                    print '[-] function failed to run.'
+                    print e
 
+    # Elifs allow users to call plugin functions directly from the command line
+    # There's probably a short/cleaner way to do this, but this works -DS 7/8
+
+    # Gives access to Raw functions
+    elif func in dir(forrest.raw):
+        fun = getattr(forrest.raw, func)
         try:
-            if is_obj:
-                fun = getattr(fun, method)                        
-                return_value = fun()
-            else:
-                return_value = fun(params)
-        except Exception as e:  
+            return_value = fun()
+        except Exception as e:
+            print "[-] Raw function failed to run."
             print e
 
-    except Exception as e:
-        print e
+    # Gives access to Extract functions
+    elif func in dir(forrest.extract):
+        fun = getattr(forrest.extract, func)
+        try:
+            return_value = fun()
+        except Exception as e:
+            print "[-] Extracted function failed to run."
+            print e
+
+    # Gives access to Interpret functions
+    elif func in dir(forrest.interpret):
+        fun = getattr(forrest.interpret, func)
+        try:
+            return_value = fun()
+        except Exception as e:
+            print "[-] Interpreted function failed to run."
+            print e
+
+    # Gives access to Transform functions
+    elif func in dir(forrest.transform):
+        fun = getattr(forrest.transform, func)
+        try:
+            return_value = fun()
+        except Exception as e:
+            print "[-] Transformed function failed to run."
+            print e
+
+    # Gives access to Infer functions
+    elif func in dir(forrest.infer):
+        fun = getattr(forrest.infer, func)
+        try:
+            print fun()
+        except Exception as e:
+            print "[-] Inferred function failed to run."
+            print e
+
+    else:
+        print "[-] That command does not exist!"
 
     return return_value
 
