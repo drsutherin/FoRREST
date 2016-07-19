@@ -1,3 +1,0 @@
-# Basic Tutorial
-
-Coming soon!
