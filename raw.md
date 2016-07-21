@@ -1,4 +1,6 @@
 # Raw
+The Raw plugin accesses the most fundamental information about the binary file, and are currently executed almost exclusively using Python standard library functions, e.g. ```os.stat()```.
+
 
 **```get_name```** simply parses the string which was passed as the path to the file to load, and returns only the file name, excluding the path.
 
