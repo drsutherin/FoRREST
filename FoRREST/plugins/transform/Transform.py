@@ -1,5 +1,4 @@
 #requires radare2 to be installed
-#requires angr, angr-utils, pydot, networkx, graphviz
  
 class Transform:
     
@@ -57,7 +56,6 @@ class Transform:
         '''
         Get entry and exit points for each block
         '''
-
         pass
 
 

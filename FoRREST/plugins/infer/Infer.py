@@ -48,7 +48,40 @@ class Infer:
         Will get the intermediate representation of the binary code
         Use angr->PyVex
         '''
-        pass
+	# Currently returns the IR for only 'main'
+	try:
+	    import angr, pyvex, r2pipe
+            # Use r2 to get the size of main
+            r2 = r2pipe.open(self._get_file())
+            r2.cmd('aa')
+            r2.cmd('bf sym.main')
+            size = int(str(r2.cmd('b')),16)
+            # Create angr project from file
+            proj = angr.Project(self._get_file())
+            begin = proj.entry
+            # Note end of main
+            end = begin + size
+            # Load first block
+            irsb = proj.factory.block(begin).vex
+            loc = begin
+            results = {}
+            i = 1
+            # Get and print blocks until end of main is reached or block size is 0
+            while (loc < end) and irsb.size is not 0:
+                results[i] = []
+                irsb = proj.factory.block(loc).vex
+                for stmt in irsb.statements:
+                    results[i].append(stmt)
+                loc += irsb.size
+                i += 1
+            #print results
+            return results
+
+        except ImportError:
+            print "[-] Error loading dependencies: angr, pyvex, r2pipe required"
+            print "[-] Do you have them installed?"
+            
+        return
 
     def decompile(self):
         '''
