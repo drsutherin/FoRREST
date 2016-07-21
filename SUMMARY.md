@@ -8,6 +8,6 @@
    * [Raw](raw.md)
    * [Extract](extract.md)
    * [Interpret](interpret.md)
-   * Transform
+   * [Transform](transform.md)
    * Infer
 
