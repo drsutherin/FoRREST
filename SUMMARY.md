@@ -4,4 +4,5 @@
 * [Structure/Data Representation](structure.md)
 * [Basic Tutorial](basic-tutorial.md)
 * [Advanced Tutorial](advanced_tutorial.md)
+* Plugins
 
