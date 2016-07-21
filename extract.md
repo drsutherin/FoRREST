@@ -1,2 +1,2 @@
 # Extract
-
+The Extract plugin accesses the next, higher representation of the file's data.  These are also accessed using standard Python and GNU library functions, as well as the ```python-magic``` tool.  At this level, the utility of FoRREST arises primarily from parsing the information retrieved by calling the Python and GNU functions.
