@@ -7,7 +7,7 @@
 * [Plugins](plugins.md)
    * [Raw](raw.md)
    * [Extract](extract.md)
-   * Interpret
+   * [Interpret](interpret.md)
    * Transform
    * Infer
 
