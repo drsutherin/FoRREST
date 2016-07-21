@@ -32,6 +32,8 @@ FoRREST is currently designed for Linux
 * cd into the FoRREST directory
 * Run ```install.sh```
 
+The installation script for FoRREST does not currently include [boomerang](http://www.boomerang.sourceforge.net) or [boomerang](http://www.boomerang.sourceforge.net).  Therefore, users will have to install those independently.  boomerang must be installed in FoRREST's root directory.
+
 During the installation, you will be prompted as to whether you want to install angr.  This is to allow for a shorter installation time in the event that you only plan to use the lower level functions (e.g. using FoRREST as an introduction to reverse engineering).
 
 ####A Note on angr
@@ -53,14 +55,14 @@ At this point, we are not offering support for FoRREST while running angr in a v
 
 
 ## Running
-To run the program with the command line interface, from the root directory:
+To run FoRREST with the command line interface, from the root directory:
 
 ```
 python main.py
 ```
 
 ## Extending
-To extend the program, just import FoRREST into Python
+To extend FoRREST, just import it into Python
 
 ```
 ~$ python
