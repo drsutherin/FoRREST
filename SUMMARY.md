@@ -9,4 +9,5 @@
    * [Extract](extract.md)
    * Interpret
    * Transform
+   * Infer
 
