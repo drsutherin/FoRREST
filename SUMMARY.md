@@ -9,5 +9,5 @@
    * [Extract](extract.md)
    * [Interpret](interpret.md)
    * [Transform](transform.md)
-   * Infer
+   * [Infer](infer.md)
 
