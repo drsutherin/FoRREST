@@ -6,5 +6,5 @@
 * [Advanced Tutorial](advanced_tutorial.md)
 * [Plugins](plugins.md)
    * [Raw](raw.md)
-   * Extract
+   * [Extract](extract.md)
 
