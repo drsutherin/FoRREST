@@ -154,6 +154,30 @@ class Infer:
         No idea how to implement this
         Return a deobfuscated disassembly/decompilation?
         '''
+	#uses metasm to attempt to deobfuscate a binary
+	#this process can take a while
+	#can be upgraded in the future to allow for adding pattern arguments
+	
+	#requires ruby to be installed
+	#sudo apt-get install ruby
+	'''
+	from subprocess import call
+	import os
+	
+	path = os.path.join(os.path.expanduser('~'), 'metasm', 'samples')
+	os.chdir(path)
+
+	path = os.path.join(os.path.expanduser('~'), 'FoRREST', 'outputs')
+
+	path = path + '/' + self.forrest.raw.get_name() + '.txt'
+	
+	print path
+	
+	#this command works for the most part but will not output to the outputs folder
+	call(['ruby', 'disassemble.rb', '--plugin', 'deobfuscate.rb', self._get_file(), '>', path])
+	
+	return
+	'''
         pass
 
     def taint_analysis(self):
