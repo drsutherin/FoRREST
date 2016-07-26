@@ -8,6 +8,7 @@ import sys
 import readline
 
 def display_help(params = []):
+    forrest = FoRREST()
     if len(params) is 0:
         print ""
         print "FoRREST: A Framework of Robust Reverse Engineering Software Tools"
@@ -21,7 +22,22 @@ def display_help(params = []):
         # Get all functions that don't start with _ and print them out.
         for func in [func for func in dir(FoRREST) if not func.startswith("_")]:
             print func
-
+	for func in [func for func in dir(forrest.raw) if not func.startswith("_")]:
+	    if func != "forrest" and func != "select":
+	    	print func
+	for func in [func for func in dir(forrest.extract) if not func.startswith("_")]:
+	    if func != "forrest" and func != "select":
+	    	print func
+	for func in [func for func in dir(forrest.interpret) if not func.startswith("_")]:
+	    if func != "forrest" and func != "select":
+	    	print func
+	for func in [func for func in dir(forrest.transform) if not func.startswith("_")]:
+	    if func != "forrest" and func != "select":
+	    	print func
+	for func in [func for func in dir(forrest.infer) if not func.startswith("_")]:
+	    if func != "forrest" and func != "select":
+	    	print func
+	
 def get_cmd(cmd = None):
     if not cmd:
         cmd = raw_input("FoRREST> ").split()
