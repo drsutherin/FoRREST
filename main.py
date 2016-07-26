@@ -21,9 +21,10 @@ def display_help(params = []):
     elif len(params) is 1 and params[0] == "ls":
         # Get all functions that don't start with _ and print them out.
         for func in [func for func in dir(FoRREST) if not func.startswith("_")]:
-            print func
+	    if func != "select" and func != "set_file":
+            	print func
 	for func in [func for func in dir(forrest.raw) if not func.startswith("_")]:
-	    if func != "forrest" and func != "select":
+	    if func != "forrest" and func != "select" and func != "reset_read" and func != "add_entry" and func != "file":
 	    	print func
 	for func in [func for func in dir(forrest.extract) if not func.startswith("_")]:
 	    if func != "forrest" and func != "select":
