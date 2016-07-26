@@ -4,12 +4,12 @@ A Framework of Robust Reverse Engineering Software Tools
 Version 0.8
 
 ## Overview
-The purpose of this project is to create a binary executable analysis framework that
+The purpose of this project is to create a framework for binary executable analysis that
 combines existing tools into one package. It also makes it easier to create or
 install tools into the framework for use.
 
 ## Background
-This project was started as part of a National Science Foundation Foundation funded research experience for undergraduates (REU) program at Wright State University in Dayton, Ohio.
+This project was started as part of a National Science Foundation Foundation funded research experience for undergraduates (REU) program at Wright State University in Dayton, Ohio. Grant #
 
 FoRREST is currently designed for Linux
 
