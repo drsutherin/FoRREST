@@ -125,9 +125,12 @@ def run_func(forrest, func, params):
 
     else:
         print "[-] That command does not exist!"
+    
+    x = ""
+    if params:
+	x = params[0]
 
-    print params
-    if params[0] == "-p":
+    if x == "-p":
     	for x in return_value:
     	    print x
     else:  
