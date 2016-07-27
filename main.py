@@ -17,7 +17,7 @@ def display_help(params = []):
         print "---------------------------------------------------------------"
         print "Begin by loading your binay with the 'load [yourfile]' command."
         print "Type 'ls' to see all available commands!"
-	print "Use argument 'p' after any command to use pretty print. ex. get_strings -p"
+	print "Use argument '-p' after any command to use pretty print. ex. get_strings -p"
         print ""
     elif len(params) is 1 and params[0] == "ls":
         # Get all functions that don't start with _ and print them out.
