@@ -1,28 +1,23 @@
 # Infer
+The Infer plugin accesses the highest level representation of the information extracted from a binary file, and can be used to perform in-depth analyses.  The inferred data features are gathered by using [boomerang](http://boomerang.sourceforge.net/)--a tool for acquiring the decompilation of a file, Radare2, and [angr](http://angr.io/)--an extensive tool for performing binary analysis.
 
+**```get_cfg```** uses angr and an extension of it called angr-utils.  The CFG is saved as a PNG image file located in the same directory as the file upon which it was called, and it is displayed immediately.
 
-get_cfg/, which uses \verb/angr/ and an extension of it called \verb/angr-utils/\cite{angr-utils}.  The CFG is saved as a PNG image file located in the same directory as the file upon which it was called, and it is displayed immediately.  An example of a CFG output by FoRREST is given at the bottom of this page in Figure 6.
+**```get_ir```** uses angr and its dependency PyVex to return the intermediate representation of the original bytes.
 
-\item System Calls: Not currently implemented, considering using GNU library's \verb/strace/
+**```decompile```** gets the decompilation by using boomerang to translate the binary into C code.  The file is saved in the outputs directory within FoRREST's root directory. 
 
-\item Function Traces: Not currently implemented, considering calling FoRREST's \verb/get_functions/ along with the disassembly to determine where functions are called, and by what other functions.
+**```deobfuscate```** is currently being developed. We are planning to use a tool called metasm.
 
-\begin{figure}[h]
-\centering
-\fbox{\includegraphics[width=0.45\textwidth]{crackme0x00a_cfg}}
-\cprotect\caption{An example of a CFG generate by calling FoRREST's \verb/get_cfg/ function on \verb/crackme0x00a/ from RPI's Modern Binary Exploitation course\cite{modernbinaryexploitation2015}.}
-\end{figure}
+#### Not Yet Implemented
+**```get_sys_calls```** is intended to return the program's call to the host system.  Not currently implemented, considering using ```strace```
 
-\item Code Slices: Not currently implemented, planning to use \verb/angr/ to perform back-slicing.
+**```get_func_trace```** is intended to return all calls to a specific function.  Not currently implemented, considering calling FoRREST's ```get_functions``` along with the disassembly to determine where functions are called, and by what other functions.
 
-\item Intermediate Representation: Currently being developed using \verb/angr/ and its dependency \verb/PyVex/\cite{shoshitaishvili2015firmalice}.
+**```slice```** Not currently implemented, planning to use angr to perform back-slicing.
 
-\item Decompilation: The decompilation of a file can be created by calling \verb/decompile/, which uses \verb/boomerang/ to translate the binary into C code.  The file is saved in the \verb/outputs/ directory, within FoRREST's root directory. 
+**```get_stack_frames```** is intended to return all of the stack frames built by the program during execution. Not currently implemented.
 
-\item Stack Frames: Not currently implemented.
+**```symbolic_exec```** Not currently implemented, planning to use angr's execution engine for symbolic execution.
 
-\item Symbolic Execution: Not currently implemented, planning to use \verb/angr/'s execution engine.
-
-\item Deobfuscation:  Currently being developed, we are planning to use a tool called \verb/metasm/.
-
-\item Taint Analysis: Not currently implemented, considering using a combination of FoRREST's \verb/get_data_references/ and \verb/slice/ functions.
+**```taint_analysis```** Not currently implemented, considering using a combination of FoRREST's \verb/get_data_references/ and \verb/slice/ functions.
