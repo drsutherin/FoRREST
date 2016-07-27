@@ -17,6 +17,7 @@ def display_help(params = []):
         print "---------------------------------------------------------------"
         print "Begin by loading your binay with the 'load [yourfile]' command."
         print "Type 'ls' to see all available commands!"
+	print "Use argument 'p' after any command to use pretty print. ex. get_strings -p"
         print ""
     elif len(params) is 1 and params[0] == "ls":
         # Get all functions that don't start with _ and print them out.
@@ -72,7 +73,7 @@ def run_func(forrest, func, params):
                 except Exception as e:
                     print '[-] function failed to run.'
                     print e
-
+    
     # Elifs allow users to call plugin functions directly from the command line
     # There's probably a short/cleaner way to do this, but this works -DS 7/8
 
@@ -80,6 +81,7 @@ def run_func(forrest, func, params):
     elif func in dir(forrest.raw):
         fun = getattr(forrest.raw, func)
         try:
+	
             return_value = fun()
         except Exception as e:
             print "[-] Raw function failed to run."
@@ -124,8 +126,14 @@ def run_func(forrest, func, params):
     else:
         print "[-] That command does not exist!"
 
-    return return_value
-
+    print params
+    if params[0] == "-p":
+    	for x in return_value:
+    	    print x
+    else:  
+    	return return_value
+    return
+   
 def shell(forrest = FoRREST(), should_display_help = True):
     if should_display_help: display_help()
 
