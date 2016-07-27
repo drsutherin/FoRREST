@@ -99,11 +99,6 @@ class FoRREST:
                 "load [filename]"
 	return output
 
-    # Add test to make sure the file is loaded    
-    def get_strings(self, params = None):
-        output = self.interpret.get_strings()
-        return output
-
     def help(self, params = None):
         with open('help.txt', 'r') as f:
             print f.read()
