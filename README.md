@@ -64,3 +64,6 @@ To extend the program, just import FoRREST into Python
 ~$ python
 >>> from FoRREST import FoRREST
 ```
+
+## Acknowledgments
+This work was partially supported by the NSF Research Experiences for Undergraduates Site Award titled “REU Site: Cyber Security Research at Wright State University” (CNS 1560315).
